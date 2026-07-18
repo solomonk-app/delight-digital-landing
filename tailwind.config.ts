@@ -21,10 +21,21 @@ const config: Config = {
           violet: '#8B5CF6',
           cyan: '#22D3EE',
         },
+        // Warm editorial palette borrowed from the paid workbook, used only in the
+        // "book" upsell panel to bridge into the product's real look.
+        book: {
+          cream: '#F5F1EA',
+          creamtx: '#EFE9DD',
+          ink: '#2A2520',
+          terra: '#C97A57',
+          rose: '#B8744A',
+          line: '#D8D0BF',
+        },
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
       },
       boxShadow: {
         glow: '0 0 0 1px rgba(139,92,246,0.15), 0 20px 60px -20px rgba(59,130,246,0.35)',

@@ -14,6 +14,9 @@ import {
   MailCheck,
   ShieldCheck,
   Loader2,
+  BookOpen,
+  Download,
+  Check,
 } from 'lucide-react';
 
 /* -------------------------------------------------------------------------- */
@@ -21,6 +24,15 @@ import {
 /* -------------------------------------------------------------------------- */
 // The existing interactive AI app that this landing page hands off to.
 const AI_APP_URL = 'https://ai.delightdigital.online';
+
+// Paid product: the public Whop sales/checkout page for
+// "AI, Made Friendly: The Complete Bundle" (anonymous visitors can buy here).
+const WHOP_CHECKOUT_URL =
+  'https://whop.com/joined/delightdigital/products/ai-made-friendly-the-complete-bundle/';
+
+// Buyer-only workbook, gated by a Whop entitlement check (see the delight-workbook
+// Cloudflare Pages project). Members land here after purchase.
+const WORKBOOK_URL = 'https://workbook.delightdigital.online';
 
 /* -------------------------------------------------------------------------- */
 /*  Sandbox data — the fill-in-the-blank prompt builder.                       */
@@ -162,6 +174,7 @@ export default function Home() {
       <Nav />
       <Hero />
       <Syllabus />
+      <BundleUpsell />
       <Footer />
     </main>
   );
@@ -181,12 +194,20 @@ function Nav() {
           Delight Digital
         </span>
       </div>
-      <a
-        href="#get-guide"
-        className="rounded-lg border border-ink-700 px-4 py-2 text-sm font-medium text-slate-300 transition hover:border-accent-violet/60 hover:text-white"
-      >
-        Get the guide
-      </a>
+      <div className="flex items-center gap-2.5">
+        <a
+          href="#bundle"
+          className="hidden items-center rounded-lg bg-book-terra px-4 py-2 text-sm font-semibold text-ink-950 transition hover:bg-book-rose hover:text-white sm:inline-flex"
+        >
+          The paid bundle
+        </a>
+        <a
+          href="#get-guide"
+          className="rounded-lg border border-ink-700 px-4 py-2 text-sm font-medium text-slate-300 transition hover:border-accent-violet/60 hover:text-white"
+        >
+          Get the guide
+        </a>
+      </div>
     </header>
   );
 }
@@ -526,6 +547,132 @@ function BentoCard({
 }
 
 /* -------------------------------------------------------------------------- */
+/*  BundleUpsell — the paid product. A warm, editorial "book" panel that        */
+/*  bridges into the dark page and previews what buyers actually receive.       */
+/* -------------------------------------------------------------------------- */
+
+// The workbook's real table of contents (8 parts) — the paid analog of the free
+// Syllabus above.
+const BOOK_PARTS: string[] = [
+  'Your First Useful Week',
+  'Build Better Prompts',
+  'Everyday AI Labs',
+  'Documents, Images & Voice',
+  'Getting Better Answers',
+  'Trust, Privacy & Scams',
+  'Build Your Personal AI System',
+  'The 30-Day Confidence Plan',
+];
+
+function BundleUpsell() {
+  return (
+    <section id="bundle" className="mx-auto max-w-6xl scroll-mt-8 px-6 py-20">
+      <div className="overflow-hidden rounded-[1.75rem] border border-ink-700 bg-gradient-to-br from-ink-800/70 to-ink-900/80 shadow-glow">
+        <div className="grid gap-10 p-8 sm:p-12 lg:grid-cols-2 lg:gap-14">
+          {/* Left — book identity + offer */}
+          <div>
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-book-terra">
+              The paid upgrade · AI, Made Friendly
+            </p>
+
+            <h2 className="mt-5 font-serif text-4xl leading-[1.05] tracking-tight text-white sm:text-5xl">
+              Not Behind, Just{' '}
+              <span className="italic text-book-terra">Beginning.</span>
+            </h2>
+
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-slate-400">
+              A practical 30-day guide to using AI in everyday life — one useful
+              task at a time. The full workbook at the heart of the Complete
+              Bundle.
+            </p>
+
+            {/* Format badges */}
+            <div className="mt-7 flex flex-wrap gap-3">
+              <FormatBadge icon={<BookOpen className="h-4 w-4" />}>
+                75-page interactive workbook — saves as you go
+              </FormatBadge>
+              <FormatBadge icon={<Download className="h-4 w-4" />}>
+                Printable PDF edition included
+              </FormatBadge>
+            </div>
+
+            {/* Primary CTA */}
+            <div className="mt-9">
+              <a
+                href={WHOP_CHECKOUT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-book-terra px-7 py-3.5 text-base font-semibold text-ink-950 shadow-[0_14px_30px_-12px_rgba(201,122,87,0.9)] transition hover:bg-book-rose hover:text-white"
+              >
+                Get the Complete Bundle
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </a>
+              <p className="mt-3 text-sm text-slate-500">
+                Instant access after checkout · Interactive + PDF · Yours to keep
+              </p>
+              <p className="mt-4 text-sm text-slate-400">
+                Already a member?{' '}
+                <a
+                  href={WORKBOOK_URL}
+                  className="font-medium text-book-terra underline-offset-4 transition hover:underline"
+                >
+                  Open your workbook →
+                </a>
+              </p>
+            </div>
+          </div>
+
+          {/* Right — what's inside (the real TOC) */}
+          <div className="rounded-2xl border border-ink-700 bg-ink-950/40 p-6 sm:p-8">
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-book-terra">
+              What&rsquo;s inside
+            </p>
+            <ul className="mt-5 space-y-3">
+              {BOOK_PARTS.map((part, i) => (
+                <li key={part} className="flex items-baseline gap-3">
+                  <span className="font-mono text-xs text-book-terra">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="text-[15px] leading-snug text-slate-300">
+                    {part}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 flex items-start gap-2.5 border-t border-ink-700 pt-5">
+              <Check className="mt-0.5 h-4 w-4 shrink-0 text-book-terra" />
+              <p className="text-sm leading-relaxed text-slate-400">
+                Plus the{' '}
+                <strong className="font-semibold text-slate-200">
+                  Resource Library
+                </strong>{' '}
+                — 50 prompts, 25 follow-ups, checklists, and your completion
+                certificate.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FormatBadge({
+  icon,
+  children,
+}: {
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}) {
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full border border-ink-700 bg-ink-950/60 px-3.5 py-1.5 text-[13px] font-medium text-slate-300">
+      <span className="text-book-terra">{icon}</span>
+      {children}
+    </span>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
 /*  Footer                                                                      */
 /* -------------------------------------------------------------------------- */
 function Footer() {
@@ -538,6 +685,17 @@ function Footer() {
         <div className="w-full max-w-md text-left">
           <SignupForm />
         </div>
+        <p className="text-sm text-slate-500">
+          Ready for the full workbook?{' '}
+          <a
+            href={WHOP_CHECKOUT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-book-terra underline-offset-4 transition hover:underline"
+          >
+            Get the Complete Bundle →
+          </a>
+        </p>
         <p className="text-xs text-slate-600">
           © {new Date().getFullYear()} Delight Digital. Learn AI by doing.
         </p>
