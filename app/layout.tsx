@@ -24,13 +24,13 @@ const serif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Delight Digital — The AI Beginner's Guide",
+  title: 'Delight Digital — AI, Made Friendly',
   description:
-    'Stop guessing prompts. Master AI interactively with Delight Digital. A hands-on guide for people with zero technical experience.',
+    'A calm, beginner-friendly way to start using AI in everyday life — one useful task at a time. No coding, no jargon, no feeling behind.',
   openGraph: {
-    title: "Delight Digital — The AI Beginner's Guide",
+    title: 'Delight Digital — AI, Made Friendly',
     description:
-      'Learn AI by doing, not reading. An interactive guide for total beginners.',
+      "You're not behind. You're just beginning. A gentle, practical guide to using AI for real, everyday tasks.",
     type: 'website',
   },
 };

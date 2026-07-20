@@ -4,56 +4,66 @@ import { useEffect, useRef, useState } from 'react';
 import {
   ArrowRight,
   Sparkles,
-  Terminal,
   Play,
-  Quote,
-  BrainCircuit,
-  Image as ImageIcon,
-  Workflow,
   Mail,
   MailCheck,
-  ShieldCheck,
   Loader2,
   BookOpen,
   Download,
   Check,
+  FileText,
+  UtensilsCrossed,
+  PenLine,
+  Scale,
+  ShieldCheck,
+  RefreshCw,
 } from 'lucide-react';
 
 /* -------------------------------------------------------------------------- */
 /*  CONFIG                                                                      */
 /* -------------------------------------------------------------------------- */
-// The existing interactive AI app that this landing page hands off to.
+// The reference field guide (look things up, grab a prompt). Passcode-gated;
+// the free guide is reachable without one.
 const AI_APP_URL = 'https://ai.delightdigital.online';
 
 // Paid product: the public Whop sales/checkout page for
-// "AI, Made Friendly: The Complete Bundle" (anonymous visitors can buy here).
+// "AI, Made Friendly — The Complete Bundle" (anonymous visitors can buy here).
 const WHOP_CHECKOUT_URL =
   'https://whop.com/joined/delightdigital/products/ai-made-friendly-the-complete-bundle/';
 
-// Buyer-only workbook, gated by a Whop entitlement check (see the delight-workbook
-// Cloudflare Pages project). Members land here after purchase.
+// Buyer-only interactive workbook, gated by a Whop entitlement check.
 const WORKBOOK_URL = 'https://workbook.delightdigital.online';
 
 /* -------------------------------------------------------------------------- */
-/*  Sandbox data — the fill-in-the-blank prompt builder.                       */
+/*  Sandbox data — a beginner prompt builder for real, everyday tasks.         */
 /* -------------------------------------------------------------------------- */
 const TASKS = [
-  { value: 'a cold outreach email', label: 'Cold outreach email' },
-  { value: 'a LinkedIn hook', label: 'LinkedIn hook' },
-  { value: 'a product description', label: 'Product description' },
+  { value: 'write a thank-you note', label: 'Write a thank-you note' },
+  {
+    value: 'explain this letter in plain English',
+    label: 'Explain a confusing letter',
+  },
+  { value: 'plan 3 simple weeknight dinners', label: 'Plan simple dinners' },
+] as const;
+
+const AUDIENCES = [
+  { value: 'my doctor', label: 'my doctor' },
+  { value: 'my grandmother', label: 'my grandmother' },
+  { value: 'a busy family', label: 'a busy family' },
+  { value: 'someone who hates jargon', label: 'someone who hates jargon' },
 ] as const;
 
 const TONES = [
+  { value: 'warm', label: 'Warm' },
+  { value: 'plain and clear', label: 'Plain & clear' },
   { value: 'friendly', label: 'Friendly' },
-  { value: 'professional', label: 'Professional' },
-  { value: 'witty', label: 'Witty' },
 ] as const;
 
-// Three hardcoded mock "AI" responses — one per task. No API calls.
+// One warm, useful mock answer per task. No API calls — this is a gentle preview.
 const MOCK_RESPONSES: string[] = [
-  "Subject: A quick idea for your team\n\nHi Jordan,\n\nNoticed your team just shipped the new onboarding flow — clean work. I help ops folks reclaim ~5 hours a week by automating the repetitive bits (inbox triage, follow-ups, data entry).\n\nWorth a 15-minute look? I'll bring one automation you can keep, free.\n\n— Sam",
-  "Everyone says \"AI will take your job.\"\n\nWrong.\n\nA person who knows how to *ask* AI will take your job.\n\nHere's the 3-line prompt I use to draft a week of content in 10 minutes 👇",
-  "Meet FocusDesk — the standing desk that remembers you.\n\nIt learns your sit/stand rhythm, nudges you before the slump hits, and syncs your posture data to your calendar. Less back pain, more deep work. Assembled in under 10 minutes, no tools, no manual.",
+  'Dear Dr. [Name],\n\nThank you for the care and patience you showed me at my last visit. You took the time to explain things in plain language and never made me feel rushed — it made a hard week a little easier. I’m grateful.\n\nWith thanks,\n[Your name]',
+  'Here’s what your letter is saying, in plain words:\n\n• They’ve received your request, and it’s being reviewed.\n• They need one more document from you by the date near the top.\n• Send it in time and nothing else is needed from you right now.\n\nNext step: find that date, send the document, keep a copy.\n(Always double-check anything important against the letter itself.)',
+  'Three simple dinners for this week:\n\n1. Sheet-pan chicken + broccoli — 30 min, one tray, easy cleanup.\n2. Rice bowls — leftover veg, an egg on top, a splash of soy.\n3. Tomato pasta — pantry staples, done in 20.\n\nStart with #1 if you’re worn out — it’s the least effort.',
 ];
 
 const STREAM_SPEED_MS = 16;
@@ -102,14 +112,14 @@ function SignupForm({ id }: { id?: string }) {
     return (
       <div
         id={id}
-        className="flex max-w-md items-start gap-3 rounded-xl border border-accent-cyan/30 bg-accent-cyan/5 p-4"
+        className="flex max-w-md items-start gap-3 rounded-xl border border-book-terra/40 bg-book-terra/10 p-4"
       >
-        <MailCheck className="mt-0.5 h-5 w-5 shrink-0 text-accent-cyan" />
+        <MailCheck className="mt-0.5 h-5 w-5 shrink-0 text-book-terra" />
         <div>
-          <p className="font-semibold text-white">Check your inbox</p>
-          <p className="mt-0.5 text-sm text-slate-400">
+          <p className="font-semibold text-book-ink">Check your inbox</p>
+          <p className="mt-0.5 text-sm text-book-stone">
             Your free guide is on the way. If you don&rsquo;t see it in a minute,
-            check your spam folder.
+            have a look in your spam folder.
           </p>
         </div>
       </div>
@@ -120,7 +130,7 @@ function SignupForm({ id }: { id?: string }) {
     <form id={id} onSubmit={handleSubmit} className="max-w-md" noValidate>
       <div className="flex flex-col gap-2.5 sm:flex-row">
         <div className="relative flex-1">
-          <Mail className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+          <Mail className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-book-stone" />
           <input
             type="email"
             required
@@ -129,34 +139,34 @@ function SignupForm({ id }: { id?: string }) {
             placeholder="you@example.com"
             aria-label="Email address"
             autoComplete="email"
-            className="w-full rounded-xl border border-ink-700 bg-ink-900/70 py-3.5 pl-10 pr-4 text-base text-slate-100 placeholder:text-slate-600 transition focus:border-accent-violet focus:outline-none"
+            className="w-full rounded-xl border border-book-line bg-white/70 py-3.5 pl-10 pr-4 text-base text-book-ink placeholder:text-book-stone/70 transition focus:border-book-terra focus:outline-none"
           />
         </div>
         <button
           type="submit"
           disabled={status === 'submitting'}
-          className="group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-r from-accent-blue to-accent-violet px-6 py-3.5 text-base font-semibold text-white shadow-glow transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
+          className="group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-book-terra px-6 py-3.5 text-base font-semibold text-white shadow-terra transition hover:bg-book-rose disabled:cursor-not-allowed disabled:opacity-70"
         >
           {status === 'submitting' ? (
             <>
               <Loader2 className="h-4 w-4 animate-spin" />
-              Sending…
+              Sending&hellip;
             </>
           ) : (
             <>
-              Get the Free Guide
+              Send me the free guide
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </>
           )}
         </button>
       </div>
       {status === 'error' ? (
-        <p className="mt-2 text-sm text-red-400" role="alert">
+        <p className="mt-2 text-sm text-red-700" role="alert">
           {error}
         </p>
       ) : (
-        <p className="mt-2 text-sm text-slate-500">
-          Free · Instant access · No card · Unsubscribe anytime
+        <p className="mt-2 text-sm text-book-stone">
+          Free &middot; A 16-page beginner&rsquo;s guide &middot; No card &middot; Unsubscribe anytime
         </p>
       )}
     </form>
@@ -166,15 +176,10 @@ function SignupForm({ id }: { id?: string }) {
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-hidden">
-      {/* Faint blueprint grid — evokes a dev tool without shouting. */}
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 bg-grid-faint bg-[size:44px_44px] opacity-40"
-      />
       <Nav />
       <Hero />
-      <Syllabus />
-      <BundleUpsell />
+      <Everyday />
+      <Bundle />
       <Footer />
     </main>
   );
@@ -187,25 +192,25 @@ function Nav() {
   return (
     <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
       <div className="flex items-center gap-2.5">
-        <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-accent-blue to-accent-violet shadow-glow">
+        <span className="grid h-8 w-8 place-items-center rounded-full bg-book-terra">
           <Sparkles className="h-4 w-4 text-white" strokeWidth={2.2} />
         </span>
-        <span className="text-sm font-semibold tracking-tight text-slate-100">
+        <span className="font-serif text-lg tracking-tight text-book-ink">
           Delight Digital
         </span>
       </div>
       <div className="flex items-center gap-2.5">
         <a
           href="#bundle"
-          className="hidden items-center rounded-lg bg-book-terra px-4 py-2 text-sm font-semibold text-ink-950 transition hover:bg-book-rose hover:text-white sm:inline-flex"
+          className="hidden items-center rounded-lg border border-book-line px-4 py-2 text-sm font-medium text-book-ink transition hover:border-book-terra/60 sm:inline-flex"
         >
-          The paid bundle
+          The bundle
         </a>
         <a
           href="#get-guide"
-          className="rounded-lg border border-ink-700 px-4 py-2 text-sm font-medium text-slate-300 transition hover:border-accent-violet/60 hover:text-white"
+          className="rounded-lg bg-book-espresso px-4 py-2 text-sm font-semibold text-book-cream transition hover:bg-book-ink"
         >
-          Get the guide
+          Free guide
         </a>
       </div>
     </header>
@@ -213,40 +218,39 @@ function Nav() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Hero — headline + CTA on the left, live sandbox on the right.              */
+/*  Hero — reassurance on the left, the beginner sandbox on the right.         */
 /* -------------------------------------------------------------------------- */
 function Hero() {
   return (
-    <section className="mx-auto grid max-w-6xl gap-14 px-6 pb-8 pt-10 lg:grid-cols-2 lg:items-center lg:pt-16">
+    <section className="mx-auto grid max-w-6xl gap-14 px-6 pb-10 pt-8 lg:grid-cols-2 lg:items-center lg:pt-14">
       {/* Left column */}
       <div className="animate-fade-up">
-        <span className="inline-flex items-center gap-2 rounded-full border border-ink-700 bg-ink-900/60 px-3 py-1 text-xs font-medium text-slate-400">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent-cyan" />
-          The AI Beginner&rsquo;s Guide
+        <span className="inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-book-terra">
+          <span className="h-1.5 w-1.5 rounded-full bg-book-terra" />
+          AI, Made Friendly &middot; A Beginner&rsquo;s Guide
         </span>
 
-        <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
-          Stop guessing prompts.{' '}
-          <span className="bg-gradient-to-r from-accent-blue via-accent-violet to-accent-cyan bg-clip-text text-transparent">
-            Master AI interactively
-          </span>{' '}
-          with Delight Digital.
+        <h1 className="mt-6 font-serif text-5xl leading-[1.03] tracking-tight text-book-ink sm:text-6xl lg:text-[4.25rem]">
+          You&rsquo;re not behind.
+          <br />
+          You&rsquo;re just{' '}
+          <span className="italic text-book-terra">beginning.</span>
         </h1>
 
-        <p className="mt-6 max-w-lg text-lg leading-relaxed text-slate-400">
-          Zero technical experience needed. No jargon, no setup, no code — just a
-          hands-on guide that teaches you to get real work done with AI by doing
-          it, not reading about it.
+        <p className="mt-6 max-w-lg text-lg leading-relaxed text-book-ink/75">
+          A calm, practical way to start using AI in everyday life &mdash; one
+          useful task at a time. No coding, no jargon, no feeling behind. Start
+          with the free guide.
         </p>
 
         <div className="mt-9">
           <SignupForm id="get-guide" />
         </div>
 
-        <Testimonial />
+        <Principle />
       </div>
 
-      {/* Right column — the signature interactive sandbox */}
+      {/* Right column — the signature beginner sandbox */}
       <div className="animate-fade-up [animation-delay:120ms]">
         <Sandbox />
       </div>
@@ -255,42 +259,38 @@ function Hero() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Testimonial (social proof, directly under the hero copy / beside sandbox)  */
+/*  Principle — the brand's own words (not a fabricated testimonial).          */
 /* -------------------------------------------------------------------------- */
-function Testimonial() {
+function Principle() {
   return (
-    <figure className="mt-10 max-w-lg rounded-2xl border border-ink-700 bg-ink-900/50 p-5">
-      <Quote className="h-5 w-5 text-accent-violet" />
-      <blockquote className="mt-3 text-sm leading-relaxed text-slate-300">
-        &ldquo;I thought AI was only for software engineers. The Delight Digital
-        guide helped me automate my daily email sorting in 20 minutes.&rdquo;
+    <figure className="mt-10 max-w-lg border-l-2 border-book-terra pl-5">
+      <blockquote className="font-serif text-xl leading-snug text-book-ink">
+        &ldquo;You don&rsquo;t need to learn everything. Start with one real task
+        from your actual life.&rdquo;
       </blockquote>
-      <figcaption className="mt-3 flex items-center gap-2 text-xs text-slate-500">
-        <span className="grid h-6 w-6 place-items-center rounded-full bg-gradient-to-br from-accent-blue to-accent-violet text-[10px] font-semibold text-white">
-          M
-        </span>
-        Maya R. · Operations Lead
+      <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-[0.16em] text-book-stone">
+        The Delight Digital promise
       </figcaption>
     </figure>
   );
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Sandbox — a mock code editor that builds a prompt and "streams" output.    */
+/*  Sandbox — build a real everyday prompt, watch a warm answer appear.        */
 /* -------------------------------------------------------------------------- */
 function Sandbox() {
-  const [taskIdx, setTaskIdx] = useState(0);
-  const [toneIdx, setToneIdx] = useState(1);
+  const [taskIdx, setTaskIdx] = useState(1);
+  const [audIdx, setAudIdx] = useState(1);
+  const [toneIdx, setToneIdx] = useState(0);
   const [output, setOutput] = useState('');
   const [isRunning, setIsRunning] = useState(false);
   const [hasRun, setHasRun] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const task = TASKS[taskIdx];
+  const audience = AUDIENCES[audIdx];
   const tone = TONES[toneIdx];
-  const prompt = `Write ${task.value} in a ${tone.value} tone.`;
 
-  // Clean up any running stream if the component unmounts.
   useEffect(() => {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -318,90 +318,97 @@ function Sandbox() {
   };
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-ink-700 bg-ink-900/80 shadow-glow backdrop-blur">
+    <div className="overflow-hidden rounded-2xl border border-book-lined bg-book-espresso shadow-book">
       {/* Title bar */}
-      <div className="flex items-center gap-2 border-b border-ink-700 bg-ink-800/60 px-4 py-3">
-        <span className="h-3 w-3 rounded-full bg-red-400/70" />
-        <span className="h-3 w-3 rounded-full bg-yellow-400/70" />
-        <span className="h-3 w-3 rounded-full bg-green-400/70" />
-        <span className="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-400">
-          <Terminal className="h-3.5 w-3.5" />
-          prompt-sandbox
+      <div className="flex items-center gap-2 border-b border-book-lined px-4 py-3">
+        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-book-cream/70">
+          Try it &middot; build a prompt
         </span>
-        <span className="ml-auto text-[10px] uppercase tracking-widest text-slate-600">
-          Live demo
+        <span className="ml-auto font-mono text-[10px] uppercase tracking-widest text-book-cream/40">
+          Preview
         </span>
       </div>
 
       {/* Builder controls */}
       <div className="space-y-4 p-5">
+        <Field label="I want to…">
+          <Select
+            value={taskIdx}
+            onChange={setTaskIdx}
+            options={TASKS.map((t) => t.label)}
+          />
+        </Field>
         <div className="grid grid-cols-2 gap-3">
-          <Field label="Task">
+          <Field label="For…">
             <Select
-              value={taskIdx}
-              onChange={(v) => setTaskIdx(v)}
-              options={TASKS.map((t) => t.label)}
+              value={audIdx}
+              onChange={setAudIdx}
+              options={AUDIENCES.map((a) => a.label)}
             />
           </Field>
           <Field label="Tone">
             <Select
               value={toneIdx}
-              onChange={(v) => setToneIdx(v)}
+              onChange={setToneIdx}
               options={TONES.map((t) => t.label)}
             />
           </Field>
         </div>
 
         {/* Constructed prompt string */}
-        <div className="rounded-lg border border-ink-700 bg-ink-950/70 p-3 font-mono text-[13px] leading-relaxed">
-          <span className="text-slate-600">&gt; </span>
-          <span className="text-slate-300">Write </span>
-          <span className="rounded bg-accent-blue/15 px-1 text-accent-cyan">
+        <div className="rounded-lg border border-book-lined bg-black/25 p-3 font-mono text-[13px] leading-relaxed text-book-cream/90">
+          <span className="text-book-cream/45">Help me </span>
+          <span className="rounded bg-book-terra/25 px-1 text-book-terra">
             {task.value}
           </span>
-          <span className="text-slate-300"> in a </span>
-          <span className="rounded bg-accent-violet/15 px-1 text-accent-violet">
+          <span className="text-book-cream/45"> for </span>
+          <span className="rounded bg-book-terra/25 px-1 text-book-terra">
+            {audience.value}
+          </span>
+          <span className="text-book-cream/45">, in a </span>
+          <span className="rounded bg-book-terra/25 px-1 text-book-terra">
             {tone.value}
           </span>
-          <span className="text-slate-300"> tone.</span>
+          <span className="text-book-cream/45"> tone.</span>
         </div>
 
         <button
           onClick={runSimulation}
           disabled={isRunning}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-accent-blue to-accent-violet px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-book-terra px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-book-rose disabled:cursor-not-allowed disabled:opacity-60"
         >
           <Play className="h-4 w-4" />
-          {isRunning ? 'Running…' : 'Run Simulation'}
+          {isRunning ? 'Thinking…' : 'See what AI says'}
         </button>
 
-        {/* Mock terminal output */}
-        <div className="terminal-scroll h-44 overflow-y-auto rounded-lg border border-ink-700 bg-ink-950/80 p-3 font-mono text-[13px] leading-relaxed text-slate-300">
+        {/* Mock answer */}
+        <div className="paper-scroll h-44 overflow-y-auto rounded-lg border border-book-lined bg-black/20 p-3 font-mono text-[13px] leading-relaxed text-book-cream/85">
           {!hasRun ? (
-            <span className="text-slate-600">
-              // Output will stream here when you run the simulation.
+            <span className="text-book-cream/40">
+              Your answer will appear here. This is a gentle preview &mdash; try it.
             </span>
           ) : (
             <span className="whitespace-pre-wrap">
               {output}
               {isRunning && (
-                <span className="ml-0.5 inline-block h-4 w-2 translate-y-0.5 animate-blink bg-accent-cyan" />
+                <span className="ml-0.5 inline-block h-4 w-2 translate-y-0.5 animate-blink bg-book-terra" />
               )}
             </span>
           )}
         </div>
+
         <div className="flex flex-col items-center gap-2 pt-1">
           <a
             href={AI_APP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-1.5 rounded-lg border border-ink-700 bg-ink-800/40 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-accent-violet/60 hover:text-white"
+            className="group inline-flex items-center gap-1.5 rounded-lg border border-book-lined px-4 py-2 text-sm font-medium text-book-cream/90 transition hover:border-book-terra/60"
           >
-            Try the real AI sandbox
+            Try the real thing
             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </a>
-          <p className="text-center text-[11px] text-slate-600">
-            This preview is simulated — the live tool runs at ai.delightdigital.online
+          <p className="text-center font-mono text-[10px] uppercase tracking-wider text-book-cream/40">
+            The full guide has 120+ ready prompts &amp; a tool picker
           </p>
         </div>
       </div>
@@ -418,7 +425,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-xs font-medium text-slate-500">
+      <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.14em] text-book-cream/55">
         {label}
       </span>
       {children}
@@ -439,10 +446,10 @@ function Select({
     <select
       value={value}
       onChange={(e) => onChange(Number(e.target.value))}
-      className="w-full cursor-pointer rounded-lg border border-ink-700 bg-ink-950/70 px-3 py-2 text-sm text-slate-200 transition hover:border-accent-violet/50 focus:border-accent-violet focus:outline-none"
+      className="w-full cursor-pointer rounded-lg border border-book-lined bg-black/20 px-3 py-2 text-sm text-book-cream transition hover:border-book-terra/50 focus:border-book-terra focus:outline-none"
     >
       {options.map((opt, i) => (
-        <option key={opt} value={i} className="bg-ink-900">
+        <option key={opt} value={i} className="bg-book-espresso text-book-cream">
           {opt}
         </option>
       ))}
@@ -451,108 +458,81 @@ function Select({
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Syllabus — bento grid of the curriculum.                                   */
+/*  Everyday — the real tasks you'll actually do (replaces the dev syllabus).   */
 /* -------------------------------------------------------------------------- */
-function Syllabus() {
+const TASK_CARDS = [
+  {
+    icon: <FileText className="h-5 w-5" />,
+    title: 'Explain a confusing letter',
+    body: 'Paste a form, a bill, or a letter and get it back in plain English — plus what to do next.',
+  },
+  {
+    icon: <UtensilsCrossed className="h-5 w-5" />,
+    title: 'Plan the week’s dinners',
+    body: 'Tell it what’s in your kitchen and how much time you have. Get three easy options.',
+  },
+  {
+    icon: <PenLine className="h-5 w-5" />,
+    title: 'Write the message you’re dreading',
+    body: 'The kind, short note to a teacher, a neighbour, or family — drafted in a few seconds.',
+  },
+  {
+    icon: <Scale className="h-5 w-5" />,
+    title: 'Compare before you decide',
+    body: 'Two strollers, two plans, two options — a clear, calm side-by-side you can trust.',
+  },
+  {
+    icon: <RefreshCw className="h-5 w-5" />,
+    title: 'Ask it to try again',
+    body: 'The first answer is only a draft. Learn the follow-ups that make it genuinely useful.',
+  },
+  {
+    icon: <ShieldCheck className="h-5 w-5" />,
+    title: 'Stay safe',
+    body: 'What to never share, and how to spot a scam text before it fools you.',
+  },
+];
+
+function Everyday() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
       <div className="mb-10 max-w-xl">
-        <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-          What you&rsquo;ll actually learn
+        <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-book-terra">
+          What you&rsquo;ll actually do
+        </span>
+        <h2 className="mt-4 font-serif text-4xl leading-[1.05] tracking-tight text-book-ink sm:text-[2.75rem]">
+          Real tasks from your{' '}
+          <span className="italic text-book-terra">actual week.</span>
         </h2>
-        <p className="mt-3 text-slate-400">
-          Built around real tasks, not theory. Each module ends with something
-          you can use the same day.
+        <p className="mt-4 text-book-ink/70">
+          Not theory. Each one starts with the exact words to type — so the blank
+          box stops being scary.
         </p>
       </div>
 
-      <div className="grid auto-rows-[minmax(180px,auto)] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {/* Large hero card */}
-        <BentoCard
-          className="sm:col-span-2 lg:row-span-2"
-          icon={<BrainCircuit className="h-6 w-6" />}
-          title="Prompt Engineering 101"
-          featured
-        >
-          The core skill. Learn the anatomy of a great prompt — context, role,
-          constraints, and examples — and the fill-in-the-blank framework you saw
-          in the sandbox. Go from vague requests to reliable, repeatable results.
-        </BentoCard>
-
-        <BentoCard
-          icon={<ImageIcon className="h-6 w-6" />}
-          title="Image Generation"
-        >
-          Turn a sentence into a usable image. Styles, aspect ratios, and the
-          words that actually change the output.
-        </BentoCard>
-
-        <BentoCard icon={<Workflow className="h-6 w-6" />} title="Automation">
-          Chain simple steps to handle repetitive work while you focus on the
-          parts only you can do.
-        </BentoCard>
-
-        <BentoCard icon={<Mail className="h-6 w-6" />} title="AI for Your Inbox">
-          Sort, summarize, and draft replies — the 20-minute setup from the
-          testimonial, step by step.
-        </BentoCard>
-
-        <BentoCard
-          className="sm:col-span-2 lg:col-span-1"
-          icon={<ShieldCheck className="h-6 w-6" />}
-          title="Using AI Responsibly"
-        >
-          Spot hallucinations, protect private data, and know when to trust the
-          output — and when not to.
-        </BentoCard>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {TASK_CARDS.map((card) => (
+          <div
+            key={card.title}
+            className="group flex flex-col rounded-2xl border border-book-line bg-book-cream/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-book-terra/50 hover:shadow-book"
+          >
+            <span className="mb-4 grid h-11 w-11 place-items-center rounded-xl border border-book-line bg-white/60 text-book-terra">
+              {card.icon}
+            </span>
+            <h3 className="font-serif text-xl text-book-ink">{card.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-book-ink/70">
+              {card.body}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );
 }
 
-function BentoCard({
-  icon,
-  title,
-  children,
-  className = '',
-  featured = false,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  children: React.ReactNode;
-  className?: string;
-  featured?: boolean;
-}) {
-  return (
-    <div
-      className={`group flex flex-col rounded-2xl border border-ink-700 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent-violet/60 hover:shadow-glow ${
-        featured
-          ? 'bg-gradient-to-br from-ink-800/80 to-ink-900/80'
-          : 'bg-ink-900/50'
-      } ${className}`}
-    >
-      <span className="mb-4 grid h-11 w-11 place-items-center rounded-xl border border-ink-700 bg-ink-950/60 text-accent-cyan transition-colors group-hover:text-accent-violet">
-        {icon}
-      </span>
-      <h3
-        className={`font-semibold text-white ${
-          featured ? 'text-2xl' : 'text-lg'
-        }`}
-      >
-        {title}
-      </h3>
-      <p className="mt-2 text-sm leading-relaxed text-slate-400">{children}</p>
-    </div>
-  );
-}
-
 /* -------------------------------------------------------------------------- */
-/*  BundleUpsell — the paid product. A warm, editorial "book" panel that        */
-/*  bridges into the dark page and previews what buyers actually receive.       */
+/*  Bundle — the paid product, in the workbook's own warm, editorial look.      */
 /* -------------------------------------------------------------------------- */
-
-// The workbook's real table of contents (8 parts) — the paid analog of the free
-// Syllabus above.
 const BOOK_PARTS: string[] = [
   'Your First Useful Week',
   'Build Better Prompts',
@@ -564,37 +544,52 @@ const BOOK_PARTS: string[] = [
   'The 30-Day Confidence Plan',
 ];
 
-function BundleUpsell() {
+function Bundle() {
   return (
     <section id="bundle" className="mx-auto max-w-6xl scroll-mt-8 px-6 py-20">
-      <div className="overflow-hidden rounded-[1.75rem] border border-ink-700 bg-gradient-to-br from-ink-800/70 to-ink-900/80 shadow-glow">
+      <div className="overflow-hidden rounded-[1.75rem] bg-book-espresso shadow-book">
         <div className="grid gap-10 p-8 sm:p-12 lg:grid-cols-2 lg:gap-14">
           {/* Left — book identity + offer */}
           <div>
             <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-book-terra">
-              The paid upgrade · AI, Made Friendly
+              The Complete Bundle &middot; AI, Made Friendly
             </p>
 
-            <h2 className="mt-5 font-serif text-4xl leading-[1.05] tracking-tight text-white sm:text-5xl">
+            <h2 className="mt-5 font-serif text-4xl leading-[1.05] tracking-tight text-book-cream sm:text-5xl">
               Not Behind, Just{' '}
               <span className="italic text-book-terra">Beginning.</span>
             </h2>
 
-            <p className="mt-5 max-w-md text-lg leading-relaxed text-slate-400">
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-book-cream/70">
               A practical 30-day guide to using AI in everyday life — one useful
-              task at a time. The full workbook at the heart of the Complete
-              Bundle.
+              task at a time. The workbook at the heart of the complete bundle.
             </p>
 
             {/* Format badges */}
             <div className="mt-7 flex flex-wrap gap-3">
               <FormatBadge icon={<BookOpen className="h-4 w-4" />}>
-                75-page interactive workbook — saves as you go
+                75-page interactive workbook — saves on your device
               </FormatBadge>
               <FormatBadge icon={<Download className="h-4 w-4" />}>
                 Printable PDF edition included
               </FormatBadge>
+              <FormatBadge icon={<Check className="h-4 w-4" />}>
+                155 parent + 18 caregiver prompts
+              </FormatBadge>
             </div>
+
+            {/* Two-sites explainer */}
+            <p className="mt-6 max-w-md text-sm leading-relaxed text-book-cream/60">
+              Two friendly websites are included: a{' '}
+              <strong className="font-semibold text-book-cream/90">
+                reference guide
+              </strong>{' '}
+              to look things up and grab a prompt, and the{' '}
+              <strong className="font-semibold text-book-cream/90">
+                fillable workbook
+              </strong>{' '}
+              where you practise and earn your certificate.
+            </p>
 
             {/* Primary CTA */}
             <div className="mt-9">
@@ -602,28 +597,28 @@ function BundleUpsell() {
                 href={WHOP_CHECKOUT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-book-terra px-7 py-3.5 text-base font-semibold text-ink-950 shadow-[0_14px_30px_-12px_rgba(201,122,87,0.9)] transition hover:bg-book-rose hover:text-white"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-book-terra px-7 py-3.5 text-base font-semibold text-white shadow-terra transition hover:bg-book-rose"
               >
-                Get the Complete Bundle
+                Get the complete bundle
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </a>
-              <p className="mt-3 text-sm text-slate-500">
-                Instant access after checkout · Interactive + PDF · Yours to keep
+              <p className="mt-3 text-sm text-book-cream/55">
+                Instant access after checkout &middot; Interactive + printable &middot; Yours to keep
               </p>
-              <p className="mt-4 text-sm text-slate-400">
+              <p className="mt-4 text-sm text-book-cream/70">
                 Already a member?{' '}
                 <a
                   href={WORKBOOK_URL}
                   className="font-medium text-book-terra underline-offset-4 transition hover:underline"
                 >
-                  Open your workbook →
+                  Open your workbook &rarr;
                 </a>
               </p>
             </div>
           </div>
 
           {/* Right — what's inside (the real TOC) */}
-          <div className="rounded-2xl border border-ink-700 bg-ink-950/40 p-6 sm:p-8">
+          <div className="rounded-2xl border border-book-lined bg-black/20 p-6 sm:p-8">
             <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-book-terra">
               What&rsquo;s inside
             </p>
@@ -633,17 +628,17 @@ function BundleUpsell() {
                   <span className="font-mono text-xs text-book-terra">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="text-[15px] leading-snug text-slate-300">
+                  <span className="text-[15px] leading-snug text-book-cream/85">
                     {part}
                   </span>
                 </li>
               ))}
             </ul>
-            <div className="mt-6 flex items-start gap-2.5 border-t border-ink-700 pt-5">
+            <div className="mt-6 flex items-start gap-2.5 border-t border-book-lined pt-5">
               <Check className="mt-0.5 h-4 w-4 shrink-0 text-book-terra" />
-              <p className="text-sm leading-relaxed text-slate-400">
+              <p className="text-sm leading-relaxed text-book-cream/70">
                 Plus the{' '}
-                <strong className="font-semibold text-slate-200">
+                <strong className="font-semibold text-book-cream/90">
                   Resource Library
                 </strong>{' '}
                 — 50 prompts, 25 follow-ups, checklists, and your completion
@@ -665,7 +660,7 @@ function FormatBadge({
   children: React.ReactNode;
 }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-ink-700 bg-ink-950/60 px-3.5 py-1.5 text-[13px] font-medium text-slate-300">
+    <span className="inline-flex items-center gap-2 rounded-full border border-book-lined bg-black/20 px-3.5 py-1.5 text-[13px] font-medium text-book-cream/85">
       <span className="text-book-terra">{icon}</span>
       {children}
     </span>
@@ -677,15 +672,15 @@ function FormatBadge({
 /* -------------------------------------------------------------------------- */
 function Footer() {
   return (
-    <footer className="border-t border-ink-800">
+    <footer className="border-t border-book-line">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 py-16 text-center">
-        <h2 className="max-w-xl text-2xl font-bold tracking-tight text-white sm:text-3xl">
-          Ready to stop guessing?
+        <h2 className="max-w-xl font-serif text-3xl leading-tight tracking-tight text-book-ink sm:text-4xl">
+          Start with one useful task.
         </h2>
         <div className="w-full max-w-md text-left">
           <SignupForm />
         </div>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-book-stone">
           Ready for the full workbook?{' '}
           <a
             href={WHOP_CHECKOUT_URL}
@@ -693,11 +688,17 @@ function Footer() {
             rel="noopener noreferrer"
             className="font-medium text-book-terra underline-offset-4 transition hover:underline"
           >
-            Get the Complete Bundle →
+            Get the complete bundle &rarr;
           </a>
         </p>
-        <p className="text-xs text-slate-600">
-          © {new Date().getFullYear()} Delight Digital. Learn AI by doing.
+        <p className="mt-2 max-w-lg text-xs leading-relaxed text-book-stone">
+          Delight Digital is an educational guide. AI can be confidently wrong —
+          always double-check anything important. Not medical, legal, or
+          financial advice.
+        </p>
+        <p className="text-xs text-book-stone/80">
+          &copy; {new Date().getFullYear()} Delight Digital. You&rsquo;re not
+          behind — you&rsquo;re just beginning.
         </p>
       </div>
     </footer>
