@@ -77,10 +77,22 @@ function SignupForm({ id }: { id?: string }) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<FormStatus>('idle');
   const [error, setError] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (status === 'submitting') return;
+
+    // Read the live field value, not just React state: browser autofill and
+    // paste can fill the input without firing onChange, which would otherwise
+    // leave state empty and submit a blank email.
+    const value = (inputRef.current?.value ?? email).trim();
+    if (!value) {
+      setStatus('error');
+      setError('Please enter your email address.');
+      return;
+    }
+    setEmail(value);
 
     setStatus('submitting');
     setError('');
@@ -89,7 +101,7 @@ function SignupForm({ id }: { id?: string }) {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: value }),
       });
       const data = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
@@ -132,8 +144,10 @@ function SignupForm({ id }: { id?: string }) {
         <div className="relative flex-1">
           <Mail className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-book-stone" />
           <input
+            ref={inputRef}
             type="email"
             required
+            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
