@@ -28,20 +28,23 @@ npm run studio              # live preview / tweak in the browser
 truth for voiceover text) and writes `public/day-0X.mp3` + `.words.json`.
 
 ## How it's built
-- `src/manifests.ts` — per-day scene list (`DAYS`). This is what you edit to add/adjust videos.
+- `src/days.json` — **all 30 days as data** (id, audio, cta, scenes). This is what you edit.
+- `voiceover.json` — `{DayNN: voiceover text}` for all 30 (drives audio + synced captions).
+- `src/manifests.ts` — types + `export const DAYS = days.json`.
 - `src/scenes.tsx` — the scene components: `Kinetic` (big type), `Chat` (typed prompt +
   streamed answer, `[brackets]` in terracotta), `Chips` (pill grid | numbered reveal),
   `InputBox` (blank-box typing), `EndCard`, plus `Captions` (word-by-word from real timestamps).
 - `src/DailyVideo.tsx` — generic composition; lays scenes out by weight, scaled to the audio length.
-- `src/Root.tsx` — registers Day01–Day05; `calculateMetadata` fetches the words file and sets
-  the duration from the audio.
+- `src/Root.tsx` — registers every day in `DAYS`; `calculateMetadata` fetches the words file and
+  sets the duration from the audio.
 - `src/theme.ts`, `src/fonts.ts` — brand tokens + Instrument Serif / Inter / JetBrains Mono.
+- `build-days.py` — merges `gen/b*.json` batches into `days.json` + `voiceover.json`, with validation.
 
-## Add Days 6–30
-1. Add the VO to `../video/manifests/day-06.json` (or wherever your script text lives).
-2. Add a `DayDef` to `DAYS` in `manifests.ts` (scenes: kinetic / chat / chips / input / end,
-   each with a `w` weight — weights auto-scale to the voice length).
-3. `./sync-audio.sh` (extend the loop to the new day) then `./render.sh Day06`.
+## Edit or add a day
+1. Edit the day's entry in `src/days.json` (scenes: kinetic / chat / chips / input / end, each
+   with a `w` weight — weights auto-scale to the voice length) and its text in `voiceover.json`.
+2. `./sync-audio.sh 12` regenerates just Day 12's voice + timestamps (omit the number for all).
+3. `./render.sh Day12` (omit for all).
 
 ## Notes
 - Captions use ElevenLabs per-word timestamps → frame-accurate. No prices/model names appear.

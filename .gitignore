@@ -16,3 +16,4 @@ next-env.d.ts
 campaign/video/fonts/
 campaign/video/out/
 campaign/video/__pycache__/
+campaign/video-remotion/gen/

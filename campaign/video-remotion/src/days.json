@@ -1,0 +1,1637 @@
+[
+  {
+    "id": "Day01",
+    "audio": "day-01.mp3",
+    "wordsFile": "day-01.words.json",
+    "cta": "Send this to someone who says they’re “too behind.”",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 16,
+        "serif": true,
+        "lines": [
+          "You’re not behind.",
+          "You’re just *beginning.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 15,
+        "serif": true,
+        "lines": [
+          "You don’t have to",
+          "learn *everything.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 14,
+        "serif": true,
+        "lines": [
+          "You don’t have to",
+          "use it *every day.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 16,
+        "serif": true,
+        "lines": [
+          "One real question",
+          "is *enough.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 13,
+        "serif": true,
+        "lines": [
+          "Beginning isn’t",
+          "*being behind.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 11
+      }
+    ]
+  },
+  {
+    "id": "Day02",
+    "audio": "day-02.mp3",
+    "wordsFile": "day-02.words.json",
+    "cta": "Save this and try it today.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 15,
+        "lines": [
+          "It’s not you.",
+          "*It’s the prompt.*"
+        ]
+      },
+      {
+        "type": "chat",
+        "w": 18,
+        "eyebrow": "the boring way",
+        "prompt": "Plan a workout.",
+        "answer": "Sure — here’s a workout:\nWarm up, do some cardio,\nthen stretch. A few times a week.",
+        "tone": "flat"
+      },
+      {
+        "type": "chips",
+        "w": 17,
+        "title": "Five small *parts.*",
+        "items": [
+          "Role",
+          "Task",
+          "Audience",
+          "Format",
+          "Tone"
+        ],
+        "mode": "pill"
+      },
+      {
+        "type": "chat",
+        "w": 32,
+        "eyebrow": "the useful way",
+        "prompt": "Act as a gentle physiotherapist. A 15-minute morning workout for someone at a desk with a sore lower back. A numbered list, one rest day, warm and reassuring.",
+        "answer": "1. Cat-cow — 2 min, loosen the lower back.\n2. Glute bridges — 10 slow reps.\n3. Standing hamstring reach.\n4. One rest day — that counts too.",
+        "tone": "good"
+      },
+      {
+        "type": "kinetic",
+        "w": 9,
+        "serif": true,
+        "lines": [
+          "Same tool.",
+          "*Better question.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 9
+      }
+    ]
+  },
+  {
+    "id": "Day03",
+    "audio": "day-03.mp3",
+    "wordsFile": "day-03.words.json",
+    "cta": "Save this for the next time you’re stuck.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "lines": [
+          "Using AI well isn’t",
+          "*complicated.*"
+        ]
+      },
+      {
+        "type": "chips",
+        "w": 54,
+        "title": "4 tiny *habits.*",
+        "items": [
+          "Talk like a person",
+          "Give it backstory",
+          "Ask it to redo",
+          "Verify what matters"
+        ],
+        "mode": "numbered"
+      },
+      {
+        "type": "kinetic",
+        "w": 17,
+        "serif": true,
+        "lines": [
+          "Four habits.",
+          "*That’s it.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 15
+      }
+    ]
+  },
+  {
+    "id": "Day04",
+    "audio": "day-04.mp3",
+    "wordsFile": "day-04.words.json",
+    "cta": "Share this with your group chat of fellow beginners.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 15,
+        "lines": [
+          "5:00 · nobody",
+          "planned *dinner.*"
+        ]
+      },
+      {
+        "type": "chat",
+        "w": 60,
+        "eyebrow": "hand it to AI",
+        "prompt": "I have [chicken, broccoli, rice, eggs] and about [30 min] to feed [a family of 4]. Suggest 3 simple dinners — mark the easiest one.",
+        "answer": "1. Sheet-pan chicken + broccoli — 30 min, one tray.\n2. Rice bowls — leftover veg, an egg on top.\n3. Tomato pasta — pantry staples, done in 20.\nStart with #1 if you’re worn out.",
+        "tone": "good"
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "Dinner, *sorted.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 13
+      }
+    ]
+  },
+  {
+    "id": "Day05",
+    "audio": "day-05.mp3",
+    "wordsFile": "day-05.words.json",
+    "cta": "Comment the task you’d want AI to help with — I’ll suggest a prompt.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "lines": [
+          "…and you just",
+          "stared at the *box?*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 13,
+        "lines": [
+          "There are",
+          "*no magic words.*"
+        ]
+      },
+      {
+        "type": "input",
+        "w": 16,
+        "label": "type one real question",
+        "typed": "Explain this letter in plain English."
+      },
+      {
+        "type": "input",
+        "w": 14,
+        "typed": "What’s a kind way to reply to this?"
+      },
+      {
+        "type": "input",
+        "w": 12,
+        "typed": "Help me plan Tuesday."
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "The box isn’t",
+          "a *test.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 12
+      }
+    ]
+  },
+  {
+    "id": "Day06",
+    "audio": "day-06.mp3",
+    "wordsFile": "day-06.words.json",
+    "cta": "Screenshot these so they’re there when you need them.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "serif": true,
+        "lines": [
+          "The first answer",
+          "isn’t the *final* one."
+        ]
+      },
+      {
+        "type": "chat",
+        "w": 24,
+        "eyebrow": "a “meh” first answer",
+        "prompt": "Write a birthday message.",
+        "answer": "Happy birthday! Hope you\nhave a wonderful day filled\nwith joy and happiness.",
+        "tone": "flat"
+      },
+      {
+        "type": "chips",
+        "w": 40,
+        "title": "Don’t start over — *ask it to redo.*",
+        "items": [
+          "Make it shorter",
+          "Make it friendlier",
+          "Give me 3 options",
+          "Ask me 3 questions first"
+        ],
+        "mode": "pill"
+      },
+      {
+        "type": "chat",
+        "w": 26,
+        "eyebrow": "the follow-up",
+        "prompt": "Ask me 3 questions first, then write it.",
+        "answer": "Sure — quick things first:\nWho’s it for? What’s the occasion?\nAny inside jokes I should use?",
+        "tone": "good"
+      },
+      {
+        "type": "kinetic",
+        "w": 10,
+        "serif": true,
+        "lines": [
+          "You’re just",
+          "*steering.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 11
+      }
+    ]
+  },
+  {
+    "id": "Day07",
+    "audio": "day-07.mp3",
+    "wordsFile": "day-07.words.json",
+    "cta": "Everything you saw here lives in the bundle — link in bio when you’re ready.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "lines": [
+          "This builds the",
+          "prompt *for you.*"
+        ]
+      },
+      {
+        "type": "chips",
+        "w": 46,
+        "title": "Five little *fields.*",
+        "items": [
+          "Role",
+          "Task",
+          "Audience",
+          "Format",
+          "Tone"
+        ],
+        "mode": "pill"
+      },
+      {
+        "type": "chat",
+        "w": 28,
+        "eyebrow": "tap copy → paste into any tool",
+        "prompt": "Act as a friendly coach. Write a short pep-talk for [my first gym day]. Three sentences. Warm and simple.",
+        "answer": "You showed up — that’s the hard part.\nStart light, move slow, no rush.\nProud of you already. Let’s go.",
+        "tone": "good"
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "No more",
+          "*blank box.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 13
+      }
+    ]
+  },
+  {
+    "id": "Day08",
+    "audio": "day-08.mp3",
+    "wordsFile": "day-08.words.json",
+    "cta": "Bookmark this and come back when you’ve got five quiet minutes.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "lines": [
+          "A good prompt is",
+          "a *5-part recipe.*"
+        ]
+      },
+      {
+        "type": "chat",
+        "w": 22,
+        "eyebrow": "the vague version",
+        "prompt": "Write a thank-you note.",
+        "answer": "Thank you so much for the gift.\nI really appreciate your kindness.\nBest wishes, [name].",
+        "tone": "flat"
+      },
+      {
+        "type": "chips",
+        "w": 40,
+        "title": "Five *ingredients.*",
+        "items": [
+          "Role",
+          "Task",
+          "Audience",
+          "Format",
+          "Tone"
+        ],
+        "mode": "pill"
+      },
+      {
+        "type": "chat",
+        "w": 32,
+        "eyebrow": "the 5-part version",
+        "prompt": "Act as a warm, down-to-earth writer. Write a short thank-you note for a [gift someone sent]. It’s for my [aunt]. Three or four sentences. Warm and genuine, not formal.",
+        "answer": "Auntie — the [gift] genuinely made\nmy week. It’s so you to think of me.\nThank you, truly. Can’t wait to see you\nsoon and thank you properly.",
+        "tone": "good"
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "Learn five,",
+          "prompt *anything.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 11
+      }
+    ]
+  },
+  {
+    "id": "Day09",
+    "audio": "day-09.mp3",
+    "wordsFile": "day-09.words.json",
+    "cta": "Save it, then open a tool and paste it in. Report back.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "serif": true,
+        "lines": [
+          "A letter lands.",
+          "*A wall of jargon.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 11,
+        "serif": true,
+        "lines": [
+          "Before you",
+          "*panic…*"
+        ]
+      },
+      {
+        "type": "chat",
+        "w": 44,
+        "eyebrow": "paste it in",
+        "prompt": "I’ll paste a letter. Explain it in plain English, tell me what it’s actually asking me to do, and list any questions I should ask. This is not legal or medical advice.",
+        "answer": "In plain English: it’s a renewal notice.\nWhat to do: reply by the date on top.\nAsk them: can I get more time?\n(Not legal or medical advice.)",
+        "tone": "good"
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "Prepared,",
+          "not *panicked.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 12
+      }
+    ]
+  },
+  {
+    "id": "Day10",
+    "audio": "day-10.mp3",
+    "wordsFile": "day-10.words.json",
+    "cta": "Tell me: what stops you from trying AI? No wrong answers.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 13,
+        "lines": [
+          "You need",
+          "*exactly one.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 11,
+        "serif": true,
+        "lines": [
+          "Too many",
+          "*tools?*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 13,
+        "lines": [
+          "You don’t need",
+          "*all of them.*"
+        ]
+      },
+      {
+        "type": "chips",
+        "w": 40,
+        "title": "One tool. One *question.*",
+        "items": [
+          "Pick one well-known tool",
+          "Use only that for a month",
+          "Ask one real question"
+        ],
+        "mode": "numbered"
+      },
+      {
+        "type": "input",
+        "w": 13,
+        "label": "one real question",
+        "typed": "Help me plan my week."
+      },
+      {
+        "type": "kinetic",
+        "w": 11,
+        "serif": true,
+        "lines": [
+          "That’s the",
+          "*whole start.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 11
+      }
+    ]
+  },
+  {
+    "id": "Day11",
+    "audio": "day-11.mp3",
+    "wordsFile": "day-11.words.json",
+    "cta": "Get the complete beginner bundle through the link in my bio.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "lines": [
+          "Which tool?",
+          "Answer *3 questions.*"
+        ]
+      },
+      {
+        "type": "chips",
+        "w": 18,
+        "title": "1 · What do you *do?*",
+        "items": [
+          "Write something",
+          "Find information",
+          "Make an image"
+        ],
+        "mode": "pill"
+      },
+      {
+        "type": "chips",
+        "w": 18,
+        "title": "Then just *two more.*",
+        "items": [
+          "How much to spend?",
+          "How private?"
+        ],
+        "mode": "numbered"
+      },
+      {
+        "type": "kinetic",
+        "w": 16,
+        "lines": [
+          "One clear pick.",
+          "*Not a list of 20.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "Know which one",
+          "to open *first.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 11
+      }
+    ]
+  },
+  {
+    "id": "Day12",
+    "audio": "day-12.mp3",
+    "wordsFile": "day-12.words.json",
+    "cta": "Screenshot the prompt so it's there when you need it.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "lines": [
+          "'Give me ideas'",
+          "gets you *nothing.*"
+        ]
+      },
+      {
+        "type": "chat",
+        "w": 18,
+        "eyebrow": "the vague way",
+        "prompt": "Give me some birthday ideas.",
+        "answer": "Sure — here are some ideas:\nHave a party, get a cake,\nbuy a nice gift. Maybe dinner out.",
+        "tone": "flat"
+      },
+      {
+        "type": "chips",
+        "w": 15,
+        "title": "Add real *details.*",
+        "items": [
+          "who it's for",
+          "real details",
+          "a budget",
+          "a first step"
+        ],
+        "mode": "pill"
+      },
+      {
+        "type": "chat",
+        "w": 38,
+        "eyebrow": "the specific way",
+        "prompt": "Help me plan a small 70th birthday for my mom. She loves [gardening, jazz, her grandkids], dislikes big crowds, budget of [$X]. Suggest 5 low-stress ideas, each with a first step this week.",
+        "answer": "1. A small garden tea — invite 6, not 60. First step: pick a date.\n2. A jazz playlist from her era — ask her top 3.\n3. A grandkids' memory jar, one note each.\nStart with #1 — lowest stress.",
+        "tone": "good"
+      },
+      {
+        "type": "kinetic",
+        "w": 10,
+        "serif": true,
+        "lines": [
+          "Real details in.",
+          "*Useful answer out.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 11
+      }
+    ]
+  },
+  {
+    "id": "Day13",
+    "audio": "day-13.mp3",
+    "wordsFile": "day-13.words.json",
+    "cta": "Share this with your group chat of fellow beginners.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 13,
+        "lines": [
+          "Aisle 5.",
+          "*Meltdown.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "lines": [
+          "You can't think",
+          "fast *then.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 11,
+        "serif": true,
+        "lines": [
+          "So rehearse it",
+          "*first.*"
+        ]
+      },
+      {
+        "type": "chat",
+        "w": 40,
+        "eyebrow": "ask a tool like this",
+        "prompt": "My 2-year-old has tantrums in shops. Role-play a calm 3-step script I can use in the moment, in plain words I'll actually remember.",
+        "answer": "1. Get low — down to their level.\n2. Name the feeling — 'you're upset.'\n3. Offer a small choice — 'this one or that?'\nPractice it once at home.",
+        "tone": "good"
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "Next time, you've",
+          "*got the words.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 13
+      }
+    ]
+  },
+  {
+    "id": "Day14",
+    "audio": "day-14.mp3",
+    "wordsFile": "day-14.words.json",
+    "cta": "Save this for the next time you're stuck.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "serif": true,
+        "lines": [
+          "AI is safe.",
+          "Keep *5 to yourself.*"
+        ]
+      },
+      {
+        "type": "chips",
+        "w": 52,
+        "title": "5 to *never paste.*",
+        "items": [
+          "Passwords — it never needs them",
+          "One-time codes — for your eyes only",
+          "Full card / bank numbers — no prompt needs them",
+          "Government ID numbers — describe it instead",
+          "Login pages — sign in outside the chat"
+        ],
+        "mode": "numbered"
+      },
+      {
+        "type": "kinetic",
+        "w": 14,
+        "serif": true,
+        "lines": [
+          "Keep 5 out.",
+          "Use the rest *freely.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 12
+      }
+    ]
+  },
+  {
+    "id": "Day15",
+    "audio": "day-15.mp3",
+    "wordsFile": "day-15.words.json",
+    "cta": "Want the fillable version that saves your progress? Link in bio.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 13,
+        "lines": [
+          "Not just a PDF.",
+          "Do it *on screen.*"
+        ]
+      },
+      {
+        "type": "input",
+        "w": 16,
+        "label": "type your answers in",
+        "typed": "This week I asked AI to plan dinner."
+      },
+      {
+        "type": "chips",
+        "w": 20,
+        "title": "Check off. *Saved.*",
+        "items": [
+          "Check off each day",
+          "Saved on your device",
+          "Nothing to sync"
+        ],
+        "mode": "pill"
+      },
+      {
+        "type": "kinetic",
+        "w": 13,
+        "lines": [
+          "Reach the end?",
+          "Print your *certificate.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 10,
+        "serif": true,
+        "lines": [
+          "Type. Check off.",
+          "*Finish.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 12
+      }
+    ]
+  },
+  {
+    "id": "Day16",
+    "audio": "day-16.mp3",
+    "wordsFile": "day-16.words.json",
+    "cta": "Bookmark this and come back when you’ve got five quiet minutes.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "serif": true,
+        "lines": [
+          "Caring for someone?",
+          "Paperwork *piles up.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 13,
+        "serif": true,
+        "lines": [
+          "Words you’re",
+          "scared to *get wrong.*"
+        ]
+      },
+      {
+        "type": "chat",
+        "w": 46,
+        "eyebrow": "walk in prepared",
+        "prompt": "I’ll paste a medical letter. Explain it in plain English, list anything I should ask the doctor, and flag words to look up. This is not legal or medical advice.",
+        "answer": "Plain English: a routine follow-up letter.\n[Ask the doctor]: what happens next.\n[Look up]: two words it uses.\nThis is prep — not advice.",
+        "tone": "good"
+      },
+      {
+        "type": "chips",
+        "w": 20,
+        "title": "Three calm *cards.*",
+        "items": [
+          "Plain English",
+          "Questions to ask",
+          "Words to look up"
+        ],
+        "mode": "pill"
+      },
+      {
+        "type": "kinetic",
+        "w": 13,
+        "serif": true,
+        "lines": [
+          "*Prep,* not advice.",
+          "You still ask."
+        ]
+      },
+      {
+        "type": "end",
+        "w": 11
+      }
+    ]
+  },
+  {
+    "id": "Day17",
+    "audio": "day-17.mp3",
+    "wordsFile": "day-17.words.json",
+    "cta": "Save this for the next time you’re stuck.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "serif": true,
+        "lines": [
+          "It can sound *sure.*",
+          "And be wrong."
+        ]
+      },
+      {
+        "type": "chat",
+        "w": 28,
+        "eyebrow": "sounds certain",
+        "prompt": "Who wrote ‘The Blue Lantern’?",
+        "answer": "‘The Blue Lantern’ was written\nby Edith Marlowe in 1931.\nIt won three national prizes.\nA beloved classic.",
+        "tone": "flat"
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "That’s a",
+          "*hallucination.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 10,
+        "lines": [
+          "Not lying.",
+          "*Guessing.*"
+        ]
+      },
+      {
+        "type": "chips",
+        "w": 20,
+        "title": "Verify what *matters.*",
+        "items": [
+          "Names",
+          "Numbers",
+          "Sources"
+        ],
+        "mode": "numbered"
+      },
+      {
+        "type": "kinetic",
+        "w": 13,
+        "serif": true,
+        "lines": [
+          "A first draft.",
+          "Not the *final word.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 11
+      }
+    ]
+  },
+  {
+    "id": "Day18",
+    "audio": "day-18.mp3",
+    "wordsFile": "day-18.words.json",
+    "cta": "Save it, then open a tool and paste it in. Report back.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "lines": [
+          "No answer is",
+          "a *dead end.*"
+        ]
+      },
+      {
+        "type": "chat",
+        "w": 28,
+        "eyebrow": "too long · too generic",
+        "prompt": "Explain compound interest.",
+        "answer": "Compound interest is interest earned\non interest. Over time, your balance\ngrows faster and faster, which is why\nstarting early can be so powerful…",
+        "tone": "flat"
+      },
+      {
+        "type": "chat",
+        "w": 24,
+        "eyebrow": "move 1 · make it shorter",
+        "prompt": "Make it shorter, in plain language.",
+        "answer": "You earn interest on your interest —\nso your savings snowball.\nStart early; time does the work.",
+        "tone": "good"
+      },
+      {
+        "type": "chat",
+        "w": 26,
+        "eyebrow": "move 2 · ask me first",
+        "prompt": "Ask me three questions first, so it actually fits me.",
+        "answer": "1. How much can you save a month?\n2. For how many years?\n3. Saving, or clearing debt first?",
+        "tone": "good"
+      },
+      {
+        "type": "chat",
+        "w": 26,
+        "eyebrow": "move 3 · what to verify",
+        "prompt": "Tell me what I should double-check before I trust this.",
+        "answer": "Double-check the [interest rate],\nhow often it compounds, and any fees.\nThen the maths holds up.",
+        "tone": "good"
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "25 little moves.",
+          "*Pick one.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 10
+      }
+    ]
+  },
+  {
+    "id": "Day19",
+    "audio": "day-19.mp3",
+    "wordsFile": "day-19.words.json",
+    "cta": "Tell me: what stops you from trying AI? No wrong answers.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "serif": true,
+        "lines": [
+          "Will AI take",
+          "*my job?*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 14,
+        "serif": true,
+        "lines": [
+          "Some tasks change.",
+          "That’s *honest.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 11,
+        "serif": true,
+        "lines": [
+          "But a task",
+          "isn’t a *job.*"
+        ]
+      },
+      {
+        "type": "chips",
+        "w": 20,
+        "title": "The valuable *skill.*",
+        "items": [
+          "Ask well",
+          "Check the work"
+        ],
+        "mode": "numbered"
+      },
+      {
+        "type": "kinetic",
+        "w": 13,
+        "serif": true,
+        "lines": [
+          "Learnable —",
+          "one *small task.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 13,
+        "serif": true,
+        "lines": [
+          "Stay curious.",
+          "Stay in the *loop.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 11
+      }
+    ]
+  },
+  {
+    "id": "Day20",
+    "audio": "day-20.mp3",
+    "wordsFile": "day-20.words.json",
+    "cta": "Screenshot the prompt so it’s there when you need it.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "lines": [
+          "Messy notes →",
+          "*clean summary.*"
+        ]
+      },
+      {
+        "type": "chat",
+        "w": 46,
+        "eyebrow": "paste the messy block",
+        "prompt": "Here are my messy bake-sale notes. Summarize in clear bullet points, list any decisions we made, and pull out the action items — with who’s doing each one.",
+        "answer": "Summary: planning the [bake sale].\nDecided: Saturday, in the church hall.\nAction items:\n- [Sam] books the hall\n- [You] make the flyer",
+        "tone": "good"
+      },
+      {
+        "type": "chips",
+        "w": 28,
+        "title": "Ask for three *things.*",
+        "items": [
+          "Bullet points",
+          "Decisions made",
+          "Action items — with owners"
+        ],
+        "mode": "numbered"
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "Keep private",
+          "details *out.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "Same notes.",
+          "One tidy *summary.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 10
+      }
+    ]
+  },
+  {
+    "id": "Day21",
+    "audio": "day-21.mp3",
+    "wordsFile": "day-21.words.json",
+    "cta": "Bookmark this and come back when you’ve got five quiet minutes.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "lines": [
+          "Before you trust it —",
+          "*PAUSE.*"
+        ]
+      },
+      {
+        "type": "chips",
+        "w": 54,
+        "title": "*PAUSE* — five steps.",
+        "items": [
+          "Pause before acting",
+          "Ask where it came from",
+          "Use a second source",
+          "Strip out private details",
+          "Escalate to a person"
+        ],
+        "mode": "numbered"
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "Five letters.",
+          "*Ten seconds.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 13,
+        "serif": true,
+        "lines": [
+          "It keeps you the",
+          "*one in charge.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 12
+      }
+    ]
+  },
+  {
+    "id": "Day22",
+    "audio": "day-22.mp3",
+    "wordsFile": "day-22.words.json",
+    "cta": "Share this with your group chat of fellow beginners.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "lines": [
+          "The same three books…",
+          "*again.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 13,
+        "lines": [
+          "Make a story starring",
+          "*your own kid.*"
+        ]
+      },
+      {
+        "type": "chat",
+        "w": 50,
+        "eyebrow": "hand it to AI",
+        "prompt": "Tell me a five-minute bedtime story for a six-year-old named [Mira] who loves [turtles and rockets]. Gentle, a happy ending, and a tiny lesson about being patient.",
+        "answer": "Once, a turtle named [Mira] dreamed of the stars.\nRocket by rocket, she learned to wait for the right moment.\nWhen at last she flew, the sky felt worth it.\nAnd she drifted home, happy and sleepy.",
+        "tone": "good"
+      },
+      {
+        "type": "kinetic",
+        "w": 11,
+        "serif": true,
+        "lines": [
+          "Read it slowly.",
+          "*Watch their face.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 12
+      }
+    ]
+  },
+  {
+    "id": "Day23",
+    "audio": "day-23.mp3",
+    "wordsFile": "day-23.words.json",
+    "cta": "Try this one prompt today — that’s the whole assignment.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 13,
+        "lines": [
+          "Give it the",
+          "*backstory.*"
+        ]
+      },
+      {
+        "type": "chat",
+        "w": 18,
+        "eyebrow": "no backstory",
+        "prompt": "Write a thank-you note.",
+        "answer": "Dear [Manager], thank you for everything.\nI really appreciate all of your help.\nBest regards.",
+        "tone": "flat"
+      },
+      {
+        "type": "chips",
+        "w": 20,
+        "title": "Add three *things.*",
+        "items": [
+          "Who you are",
+          "Who it’s for",
+          "What you want"
+        ],
+        "mode": "pill"
+      },
+      {
+        "type": "chat",
+        "w": 42,
+        "eyebrow": "with backstory",
+        "prompt": "I’m a shy new employee. Write a short thank-you note to my [manager] who helped me through a hard first week. Warm, but not over-the-top.",
+        "answer": "Hi [Name] — thank you for this week.\nI was nervous starting out, and your patience\nmade a hard week feel a lot kinder.\nI’m really glad I get to learn from you.",
+        "tone": "good"
+      },
+      {
+        "type": "kinetic",
+        "w": 11,
+        "serif": true,
+        "lines": [
+          "Same tool.",
+          "*Now it knows you.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 12
+      }
+    ]
+  },
+  {
+    "id": "Day24",
+    "audio": "day-24.mp3",
+    "wordsFile": "day-24.words.json",
+    "cta": "This is Day 1 of the workbook — the whole thing’s in my bio.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "lines": [
+          "Your first 5 minutes",
+          "*with AI.*"
+        ]
+      },
+      {
+        "type": "input",
+        "w": 16,
+        "label": "workbook · day 1",
+        "typed": "Explain this in plain English, like I’m new to it."
+      },
+      {
+        "type": "chat",
+        "w": 40,
+        "eyebrow": "day 1",
+        "prompt": "Explain this phone setting in plain English, like I’m new to it.",
+        "answer": "In plain terms: this setting decides who can\nsee your activity — just you, or others too.\nTurn it off to keep things private.\nYou can change it back anytime.",
+        "tone": "good"
+      },
+      {
+        "type": "kinetic",
+        "w": 13,
+        "lines": [
+          "Tick it done —",
+          "*saved on your device.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 11,
+        "serif": true,
+        "lines": [
+          "One real question.",
+          "*You just started.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 13
+      }
+    ]
+  },
+  {
+    "id": "Day25",
+    "audio": "day-25.mp3",
+    "wordsFile": "day-25.words.json",
+    "cta": "Share this with your group chat of fellow beginners.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 13,
+        "lines": [
+          "Feels a little",
+          "*off?*"
+        ]
+      },
+      {
+        "type": "chips",
+        "w": 40,
+        "title": "Three *red flags.*",
+        "items": [
+          "Urgency — act now, today",
+          "Secrecy — tell no one",
+          "An odd way to pay"
+        ],
+        "mode": "numbered"
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "lines": [
+          "Don’t click.",
+          "*Don’t reply.*"
+        ]
+      },
+      {
+        "type": "chat",
+        "w": 40,
+        "eyebrow": "ask AI",
+        "prompt": "Here’s a suspicious text — what are the [red flags], and what should I do next?",
+        "answer": "Three red flags stand out:\n1. Urgency — it rushes you to act today.\n2. Odd payment — gift cards aren’t normal.\nDon’t click or reply. Contact the company\ndirectly using a number you trust.",
+        "tone": "good"
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "When in doubt,",
+          "*slow down.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 12
+      }
+    ]
+  },
+  {
+    "id": "Day26",
+    "audio": "day-26.mp3",
+    "wordsFile": "day-26.words.json",
+    "cta": "Bookmark this and come back when you’ve got five quiet minutes.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "serif": true,
+        "lines": [
+          "Rehearse the",
+          "hard talk *first.*"
+        ]
+      },
+      {
+        "type": "chat",
+        "w": 40,
+        "eyebrow": "AI plays the other person",
+        "prompt": "Play the part of my [sister]. I need to talk about [sharing Mom’s care]. Respond the way she might, and let’s go about five turns.",
+        "answer": "I mean… I do help, when I can.\nIt’s just hard with my schedule.\nWhat are you actually asking me to take on?",
+        "tone": "good"
+      },
+      {
+        "type": "chat",
+        "w": 26,
+        "eyebrow": "go deeper",
+        "prompt": "What might I be missing?",
+        "answer": "She may feel judged, not lazy.\nName one specific task, not “more.”\nAsk what she can realistically do.",
+        "tone": "good"
+      },
+      {
+        "type": "kinetic",
+        "w": 10,
+        "lines": [
+          "Warm up",
+          "*your* side."
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "Not the first time",
+          "you’ve *said it.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 11
+      }
+    ]
+  },
+  {
+    "id": "Day27",
+    "audio": "day-27.mp3",
+    "wordsFile": "day-27.words.json",
+    "cta": "If you want someone to walk you through this one task at a time, the link’s in my bio.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "serif": true,
+        "lines": [
+          "7 days.",
+          "One tiny task *each.*"
+        ]
+      },
+      {
+        "type": "chips",
+        "w": 54,
+        "title": "Your First Useful *Week.*",
+        "items": [
+          "Explain something confusing",
+          "Improve a message",
+          "Plan a meal or task",
+          "Learn by chatting",
+          "Compare two options",
+          "A photo or a document",
+          "Save your best prompt"
+        ],
+        "mode": "numbered"
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "lines": [
+          "Five minutes each.",
+          "*No catching up.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "By Sunday, it just",
+          "feels *normal.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 15
+      }
+    ]
+  },
+  {
+    "id": "Day28",
+    "audio": "day-28.mp3",
+    "wordsFile": "day-28.words.json",
+    "cta": "Save this for the next time you’re stuck.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 14,
+        "serif": true,
+        "lines": [
+          "Measure your AI",
+          "confidence — *honestly.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 11,
+        "lines": [
+          "Rate 6 skills.",
+          "Each out of *five.*"
+        ]
+      },
+      {
+        "type": "chips",
+        "w": 24,
+        "title": "Six small *skills.*",
+        "items": [
+          "Write a clear prompt",
+          "Spot when it’s wrong",
+          "Protect your details"
+        ],
+        "mode": "pill"
+      },
+      {
+        "type": "kinetic",
+        "w": 11,
+        "lines": [
+          "Add them up:",
+          "__ / *30.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "30 days later,",
+          "*re-score the six.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 10,
+        "lines": [
+          "You just",
+          "*hesitate less.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 12
+      }
+    ]
+  },
+  {
+    "id": "Day29",
+    "audio": "day-29.mp3",
+    "wordsFile": "day-29.words.json",
+    "cta": "The guides, prompts, and interactive workbook are all through the link in my bio.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 13,
+        "serif": true,
+        "lines": [
+          "It’s not",
+          "an *ebook.*"
+        ]
+      },
+      {
+        "type": "chips",
+        "w": 44,
+        "title": "One gentle *system.*",
+        "items": [
+          "Fillable workbook",
+          "Prompt builder",
+          "Prompt library",
+          "Parent prompts",
+          "Caregiver prompts",
+          "‘Which AI’ sheet"
+        ],
+        "mode": "pill"
+      },
+      {
+        "type": "kinetic",
+        "w": 13,
+        "lines": [
+          "Reference to look up.",
+          "Workbook to *practice.*"
+        ]
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "Not an ebook —",
+          "a *whole system.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 15
+      }
+    ]
+  },
+  {
+    "id": "Day30",
+    "audio": "day-30.mp3",
+    "wordsFile": "day-30.words.json",
+    "cta": "Get the complete beginner bundle through the link in my bio.",
+    "scenes": [
+      {
+        "type": "kinetic",
+        "w": 13,
+        "serif": true,
+        "lines": [
+          "Exactly what",
+          "you *get.*"
+        ]
+      },
+      {
+        "type": "chips",
+        "w": 48,
+        "title": "What’s *inside.*",
+        "items": [
+          "Fillable workbook",
+          "Printable PDF",
+          "120 ready prompts",
+          "155 parent prompts",
+          "18 caregiver prompts",
+          "Completion certificate"
+        ],
+        "mode": "pill"
+      },
+      {
+        "type": "chips",
+        "w": 26,
+        "title": "The 30-Day *Plan.*",
+        "items": [
+          "Ask & Improve",
+          "Everyday Life",
+          "Docs, Images & Voice",
+          "Verify & Build"
+        ],
+        "mode": "pill"
+      },
+      {
+        "type": "kinetic",
+        "w": 12,
+        "serif": true,
+        "lines": [
+          "One path,",
+          "start to *finish.*"
+        ]
+      },
+      {
+        "type": "end",
+        "w": 15
+      }
+    ]
+  }
+]
