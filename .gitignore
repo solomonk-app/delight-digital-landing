@@ -11,3 +11,9 @@ next-env.d.ts
 # Cloudflare / wrangler
 .dev.vars
 .wrangler
+
+# Video pipeline — generated binaries (fonts fetched via setup_fonts.sh)
+campaign/video/fonts/
+campaign/video/out/
+campaign/video/__pycache__/
+campaign/video-remotion/gen/

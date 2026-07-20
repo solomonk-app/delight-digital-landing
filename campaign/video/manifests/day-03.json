@@ -1,0 +1,10 @@
+{
+  "day": 3,
+  "cta": "Save this for the next time you’re stuck.",
+  "vo": "People think using AI well is complicated. It’s really just four small habits. One: talk to it like a person — plain, normal words, no special commands. Two: give it a little backstory — who you are, who the answer’s for, what you actually want. Three: if the first answer misses, ask it to redo — shorter, warmer, whatever you need. Four: verify anything that matters — names, numbers, dates — with a real source. That’s it. Talk like a person, give backstory, ask for a redo, verify. Four habits, and AI starts working for you.",
+  "beats": [
+    {"type": "headline", "text": "The whole skill\n= *4 habits.*", "eyebrow": "Start here", "sec": 5},
+    {"type": "checklist", "title": "The whole skill\n= *4 habits.*", "items": ["Talk like a person", "Give it backstory", "Ask it to redo", "Verify what matters"], "reveal": true, "sec": 21},
+    {"type": "end", "sec": 4}
+  ]
+}
