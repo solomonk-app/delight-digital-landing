@@ -1,0 +1,12 @@
+{
+  "day": 2,
+  "cta": "Save this and try it today.",
+  "vo": "If AI keeps giving you boring answers, it’s probably not you — it’s the question. Most of us type one line, like plan a workout, and get something generic back. Good prompts have five little parts: who it should act as, the task, who the answer’s for, the format, and the tone. Watch. Act as a gentle physiotherapist. A fifteen-minute morning workout for someone at a desk with a sore lower back. A numbered list, one rest day, warm and reassuring. Same tool, completely different answer. Five small parts. That’s the whole trick.",
+  "beats": [
+    {"type": "headline", "text": "It’s not you.\nIt’s the *prompt.*", "eyebrow": "Better prompts", "sec": 7},
+    {"type": "prompt", "text": "Plan a workout.", "variant": "bad", "sec": 6},
+    {"type": "prompt", "text": "Act as a gentle physiotherapist. A 15-minute morning workout for someone at a desk with a sore lower back. A numbered list, one rest day, warm and reassuring.", "variant": "good", "type_anim": true, "sec": 15},
+    {"type": "mock_chat", "prompt": "…same tool, five small parts.", "answer": "1. Cat-cow — 2 min, loosen the lower back.\n2. Glute bridges — 10 slow reps.\n3. Standing hamstring reach — gentle.\n4. Rest day once a week — that counts too.", "sec": 9},
+    {"type": "end", "sec": 4}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "day": 1,
+  "cta": "Send this to someone who says they’re “too behind.”",
+  "vo": "If you feel behind on AI — like everyone else got the memo and you missed it — I want to tell you something. You’re not behind. You’re just beginning. You don’t have to learn everything. You don’t have to use it every day. You don’t have to catch up to anyone. You can start with one real question from your actual life — and that’s enough. Open a tool, type one thing, read the answer. That’s it. That’s using AI. Beginning is not the same as being behind.",
+  "beats": [
+    {"type": "headline", "text": "You’re not behind.\nYou’re just *beginning.*", "eyebrow": "AI, Made Friendly", "sec": 8},
+    {"type": "text", "text": "You don’t have to\nlearn *everything.*", "size": 104, "sec": 7},
+    {"type": "text", "text": "You don’t have to\nuse it *every day.*", "size": 104, "sec": 6},
+    {"type": "text", "text": "One real question\nis *enough.*", "size": 104, "sec": 8},
+    {"type": "text", "text": "Beginning isn’t the\nsame as *being behind.*", "size": 96, "sec": 6},
+    {"type": "end", "sec": 4}
+  ]
+}

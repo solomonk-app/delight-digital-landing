@@ -1,0 +1,14 @@
+{
+  "day": 5,
+  "cta": "Comment the task you’d want AI to help with — I’ll suggest a prompt.",
+  "vo": "Ever opened ChatGPT, seen that empty box, and just... stared at it? Like you needed to know the magic words first? You don’t. There are no magic words. Here’s your permission slip: type one real question from your actual life. Not something clever — something true. Explain this letter to me in plain English. What’s a kind way to reply to this? Help me plan Tuesday. That’s it. The box isn’t a test. It’s just a place to ask. Type one real thing, read what comes back — and you’ve already started.",
+  "beats": [
+    {"type": "headline", "text": "…and you just\nstared at the *box?*", "eyebrow": "The blank box", "sec": 6},
+    {"type": "text", "text": "There are\n*no magic words.*", "size": 104, "sec": 6},
+    {"type": "input", "typed": "Explain this letter in plain English.", "sec": 6},
+    {"type": "input", "typed": "What’s a kind way to reply to this?", "sec": 5},
+    {"type": "input", "typed": "Help me plan Tuesday.", "sec": 5},
+    {"type": "text", "text": "The box isn’t\na *test.*", "size": 104, "sec": 5},
+    {"type": "end", "sec": 4}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "day": 4,
+  "cta": "Share this with your group chat of fellow beginners.",
+  "vo": "It’s five o’clock, the fridge is a bit random, and nobody planned dinner. This is my favorite thing to hand to AI. I open a tool like ChatGPT or Claude and type: I have chicken, broccoli, rice, eggs and about thirty minutes to feed a family of four. Suggest three simple dinners, and mark the easiest one if I’m worn out. A few seconds later I’ve got three real options — and it flags the low-effort one for the nights I’m done. No new groceries. No overthinking. Just dinner, sorted.",
+  "beats": [
+    {"type": "headline", "text": "5:00 · nobody\nplanned *dinner.*", "eyebrow": "Everyday AI", "sec": 7},
+    {"type": "prompt", "text": "I have [chicken, broccoli, rice, eggs] and about [30 min] to feed [a family of 4]. Suggest 3 simple dinners — mark the easiest one if I’m worn out.", "variant": "good", "type_anim": true, "sec": 15},
+    {"type": "mock_chat", "prompt": "3 simple dinners — easiest marked", "answer": "1. Sheet-pan chicken + broccoli — 30 min, one tray.\n2. Rice bowls — leftover veg, an egg on top.\n3. Tomato pasta — pantry staples, done in 20.\nTip — start with #1 if you’re worn out.", "sec": 9},
+    {"type": "end", "sec": 4}
+  ]
+}
