@@ -56,13 +56,28 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       return json({ ok: true });
     }
 
-    // 422 = validation error (e.g. malformed email that slipped past our regex).
+    // Non-2xx: read the body once, log the real reason, map to an honest message.
+    const detail = await res.text();
+    console.error('MailerLite error', res.status, detail);
+
     if (res.status === 422) {
-      return json({ ok: false, error: 'Please enter a valid email address.' }, 400);
+      // Validation error. Distinguish a previously-unsubscribed address — which
+      // MailerLite refuses to re-import — from a genuinely malformed email, so we
+      // never mislabel a valid address as "invalid".
+      let message = 'Please check your email address and try again.';
+      try {
+        const emailErrors = (JSON.parse(detail)?.errors?.email ?? []) as string[];
+        if (emailErrors.some((e) => /unsubscrib/i.test(e))) {
+          message =
+            'That address unsubscribed previously, so it can’t be re-added here. Please use a different email.';
+        }
+      } catch {
+        /* keep the generic validation message */
+      }
+      return json({ ok: false, error: message }, 400);
     }
 
-    // Any other upstream failure: log server-side, return a generic message.
-    console.error('MailerLite error', res.status, await res.text());
+    // Any other upstream failure: generic message (already logged above).
     return json({ ok: false, error: 'Something went wrong. Please try again.' }, 502);
   } catch (err) {
     console.error('MailerLite request failed', err);

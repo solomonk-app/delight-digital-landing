@@ -21,15 +21,19 @@ const config: Config = {
           violet: '#8B5CF6',
           cyan: '#22D3EE',
         },
-        // Warm editorial palette borrowed from the paid workbook, used only in the
-        // "book" upsell panel to bridge into the product's real look.
+        // Warm editorial palette — matches the product's own look (the workbook PDF
+        // and both interactive sites: cream paper, espresso ink, terracotta accent).
         book: {
-          cream: '#F5F1EA',
+          paper: '#F2EEE6', // page background
+          cream: '#F5F1EA', // raised cards on paper
           creamtx: '#EFE9DD',
-          ink: '#2A2520',
-          terra: '#C97A57',
-          rose: '#B8744A',
-          line: '#D8D0BF',
+          espresso: '#2B2320', // dark sections + strong text
+          ink: '#2A2520', // body text
+          stone: '#7A7267', // muted / secondary text
+          terra: '#C97A57', // signature accent
+          rose: '#B8744A', // accent hover
+          line: '#E2DACB', // hairline dividers on paper
+          lined: '#3A322C', // hairline dividers on espresso
         },
       },
       fontFamily: {
@@ -39,6 +43,9 @@ const config: Config = {
       },
       boxShadow: {
         glow: '0 0 0 1px rgba(139,92,246,0.15), 0 20px 60px -20px rgba(59,130,246,0.35)',
+        // Soft, warm elevation for cards on cream paper.
+        book: '0 24px 60px -32px rgba(43,35,32,0.45)',
+        terra: '0 14px 34px -14px rgba(201,122,87,0.6)',
       },
       backgroundImage: {
         'grid-faint':
