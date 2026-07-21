@@ -3,11 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   ArrowRight,
-  Sparkles,
   Play,
-  Mail,
-  MailCheck,
-  Loader2,
   BookOpen,
   Download,
   Check,
@@ -18,21 +14,10 @@ import {
   ShieldCheck,
   RefreshCw,
 } from 'lucide-react';
-
-/* -------------------------------------------------------------------------- */
-/*  CONFIG                                                                      */
-/* -------------------------------------------------------------------------- */
-// The reference field guide (look things up, grab a prompt). Passcode-gated;
-// the free guide is reachable without one.
-const AI_APP_URL = 'https://ai.delightdigital.online';
-
-// Paid product: the public Whop sales/checkout page for
-// "AI, Made Friendly — The Complete Bundle" (anonymous visitors can buy here).
-const WHOP_CHECKOUT_URL =
-  'https://whop.com/joined/delightdigital/products/ai-made-friendly-the-complete-bundle/';
-
-// Buyer-only interactive workbook, gated by a Whop entitlement check.
-const WORKBOOK_URL = 'https://workbook.delightdigital.online';
+import { SignupForm } from '../components/signup-form';
+import { SiteHeader } from '../components/site-header';
+import { SiteFooter } from '../components/site-footer';
+import { AI_APP_URL, WHOP_CHECKOUT_URL, WORKBOOK_URL } from '../components/site-config';
 
 /* -------------------------------------------------------------------------- */
 /*  Sandbox data — a beginner prompt builder for real, everyday tasks.         */
@@ -68,166 +53,15 @@ const MOCK_RESPONSES: string[] = [
 
 const STREAM_SPEED_MS = 16;
 
-/* -------------------------------------------------------------------------- */
-/*  SignupForm — inline email capture, posts to the Cloudflare Function.       */
-/* -------------------------------------------------------------------------- */
-type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
-
-function SignupForm({ id }: { id?: string }) {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<FormStatus>('idle');
-  const [error, setError] = useState('');
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (status === 'submitting') return;
-
-    // Read the live field value, not just React state: browser autofill and
-    // paste can fill the input without firing onChange, which would otherwise
-    // leave state empty and submit a blank email.
-    const value = (inputRef.current?.value ?? email).trim();
-    if (!value) {
-      setStatus('error');
-      setError('Please enter your email address.');
-      return;
-    }
-    setEmail(value);
-
-    setStatus('submitting');
-    setError('');
-
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: value }),
-      });
-      const data = (await res.json().catch(() => ({}))) as {
-        ok?: boolean;
-        error?: string;
-      };
-
-      if (res.ok && data.ok) {
-        setStatus('success');
-      } else {
-        setStatus('error');
-        setError(data.error || 'Something went wrong. Please try again.');
-      }
-    } catch {
-      setStatus('error');
-      setError('Network error. Please check your connection and try again.');
-    }
-  };
-
-  if (status === 'success') {
-    return (
-      <div
-        id={id}
-        className="flex max-w-md items-start gap-3 rounded-xl border border-book-terra/40 bg-book-terra/10 p-4"
-      >
-        <MailCheck className="mt-0.5 h-5 w-5 shrink-0 text-book-terra" />
-        <div>
-          <p className="font-semibold text-book-ink">Check your inbox</p>
-          <p className="mt-0.5 text-sm text-book-stone">
-            Your free guide is on the way. If you don&rsquo;t see it in a minute,
-            have a look in your spam folder.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <form id={id} onSubmit={handleSubmit} className="max-w-md" noValidate>
-      <div className="flex flex-col gap-2.5 sm:flex-row">
-        <div className="relative flex-1">
-          <Mail className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-book-stone" />
-          <input
-            ref={inputRef}
-            type="email"
-            required
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@example.com"
-            aria-label="Email address"
-            autoComplete="email"
-            className="w-full rounded-xl border border-book-line bg-white/70 py-3.5 pl-10 pr-4 text-base text-book-ink placeholder:text-book-stone/70 transition focus:border-book-terra focus:outline-none"
-          />
-        </div>
-        <button
-          type="submit"
-          disabled={status === 'submitting'}
-          className="group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-book-terra px-6 py-3.5 text-base font-semibold text-white shadow-terra transition hover:bg-book-rose disabled:cursor-not-allowed disabled:opacity-70"
-        >
-          {status === 'submitting' ? (
-            <>
-              <Loader2 className="h-4 w-4 animate-spin" />
-              Sending&hellip;
-            </>
-          ) : (
-            <>
-              Send me the free guide
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </>
-          )}
-        </button>
-      </div>
-      {status === 'error' ? (
-        <p className="mt-2 text-sm text-red-700" role="alert">
-          {error}
-        </p>
-      ) : (
-        <p className="mt-2 text-sm text-book-stone">
-          Free &middot; A 16-page beginner&rsquo;s guide &middot; No card &middot; Unsubscribe anytime
-        </p>
-      )}
-    </form>
-  );
-}
-
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-hidden">
-      <Nav />
+      <SiteHeader />
       <Hero />
       <Everyday />
       <Bundle />
-      <Footer />
+      <SiteFooter />
     </main>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*  Nav                                                                         */
-/* -------------------------------------------------------------------------- */
-function Nav() {
-  return (
-    <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-      <div className="flex items-center gap-2.5">
-        <span className="grid h-8 w-8 place-items-center rounded-full bg-book-terra">
-          <Sparkles className="h-4 w-4 text-white" strokeWidth={2.2} />
-        </span>
-        <span className="font-serif text-lg tracking-tight text-book-ink">
-          Delight Digital
-        </span>
-      </div>
-      <div className="flex items-center gap-2.5">
-        <a
-          href="#bundle"
-          className="hidden items-center rounded-lg border border-book-line px-4 py-2 text-sm font-medium text-book-ink transition hover:border-book-terra/60 sm:inline-flex"
-        >
-          The bundle
-        </a>
-        <a
-          href="#get-guide"
-          className="rounded-lg bg-book-espresso px-4 py-2 text-sm font-semibold text-book-cream transition hover:bg-book-ink"
-        >
-          Free guide
-        </a>
-      </div>
-    </header>
   );
 }
 
@@ -678,43 +512,5 @@ function FormatBadge({
       <span className="text-book-terra">{icon}</span>
       {children}
     </span>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*  Footer                                                                      */
-/* -------------------------------------------------------------------------- */
-function Footer() {
-  return (
-    <footer className="border-t border-book-line">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 py-16 text-center">
-        <h2 className="max-w-xl font-serif text-3xl leading-tight tracking-tight text-book-ink sm:text-4xl">
-          Start with one useful task.
-        </h2>
-        <div className="w-full max-w-md text-left">
-          <SignupForm />
-        </div>
-        <p className="text-sm text-book-stone">
-          Ready for the full workbook?{' '}
-          <a
-            href={WHOP_CHECKOUT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-book-terra underline-offset-4 transition hover:underline"
-          >
-            Get the complete bundle &rarr;
-          </a>
-        </p>
-        <p className="mt-2 max-w-lg text-xs leading-relaxed text-book-stone">
-          Delight Digital is an educational guide. AI can be confidently wrong —
-          always double-check anything important. Not medical, legal, or
-          financial advice.
-        </p>
-        <p className="text-xs text-book-stone/80">
-          &copy; {new Date().getFullYear()} Delight Digital. You&rsquo;re not
-          behind — you&rsquo;re just beginning.
-        </p>
-      </div>
-    </footer>
   );
 }
