@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { ArrowRight, Mail, MailCheck, Loader2 } from 'lucide-react';
+import { fireLeadConversion } from './lead-conversion';
 
 /* -------------------------------------------------------------------------- */
 /*  SignupForm — inline email capture, posts to the Cloudflare Function.       */
@@ -46,6 +47,8 @@ export function SignupForm({ id }: { id?: string }) {
 
       if (res.ok && data.ok) {
         setStatus('success');
+        // Genuine MailerLite success only — fire the Ads lead conversion once.
+        fireLeadConversion(value);
       } else {
         setStatus('error');
         setError(data.error || 'Something went wrong. Please try again.');
