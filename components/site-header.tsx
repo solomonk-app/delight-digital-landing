@@ -15,7 +15,7 @@ export function SiteHeader() {
         <span className="grid h-8 w-8 place-items-center rounded-full bg-book-terra">
           <Sparkles className="h-4 w-4 text-white" strokeWidth={2.2} />
         </span>
-        <span className="font-serif text-lg tracking-tight text-book-ink max-[379px]:hidden">
+        <span className="font-serif text-lg tracking-tight text-book-ink">
           Delight Digital
         </span>
       </a>
@@ -28,7 +28,7 @@ export function SiteHeader() {
         </a>
         <a
           href="/#get-guide"
-          className="whitespace-nowrap rounded-lg bg-book-espresso px-3 py-2 text-sm font-semibold text-book-cream transition hover:bg-book-ink sm:px-4"
+          className="hidden items-center whitespace-nowrap rounded-lg bg-book-espresso px-3 py-2 text-sm font-semibold text-book-cream transition hover:bg-book-ink sm:inline-flex sm:px-4"
         >
           Free guide
         </a>
