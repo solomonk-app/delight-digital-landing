@@ -103,6 +103,15 @@ export default function ThankYouPage() {
           </a>
         </div>
 
+        {/* Reference hub passcode — buyers need this to unlock the reference site. */}
+        <p className="mt-3 text-sm text-book-stone">
+          The reference hub is passcode-protected — your password is{' '}
+          <code className="rounded bg-book-terra/10 px-1.5 py-0.5 font-mono font-semibold text-book-terra">
+            delight2026
+          </code>
+          .
+        </p>
+
         {/* Gentle first-step nudge */}
         <figure className="mt-12 max-w-xl border-l-2 border-book-terra pl-5">
           <blockquote className="font-serif text-xl leading-snug text-book-ink">
