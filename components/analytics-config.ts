@@ -24,15 +24,19 @@ export const ADS_CONVERSION_LABEL = 'Jzz6CMyuntQcELmZ5IxD';
 export const DEFAULT_VALUE = 29.99; // used when Whop doesn't pass a value
 export const CURRENCY = 'USD';
 
-/* ---- Whop redirect params (confirm exact names after a test purchase) ----- */
-// A genuine post-checkout redirect is detected by the PRESENCE of any of the
-// order-id params below. PURCHASE_PARAM / ORDER_ID_PARAM are the primary
-// guesses; the CANDIDATES list is searched as a fallback until we know the
-// real name. Value is read from VALUE_PARAM_CANDIDATES, else DEFAULT_VALUE.
+/* ---- Whop redirect params (CONFIRMED from a real test purchase) ----------- */
+// A live Whop test order redirects with:
+//   receipt_id=pay_…   payment_id=pay_…   checkout_status=success   status=success
+// (no value param). So we gate on receipt_id and use it as the transaction id;
+// payment_id is a same-value fallback, and the older guesses stay as a safety
+// net. Whop does NOT pass a price, so every conversion reports DEFAULT_VALUE —
+// keep DEFAULT_VALUE above in sync with the bundle's real price.
 export const PURCHASE_PARAM = 'receipt_id';
 export const ORDER_ID_PARAM = 'receipt_id';
 export const ORDER_ID_PARAM_CANDIDATES = [
-  'receipt_id',
+  'receipt_id', // confirmed — Whop order id (pay_…)
+  'payment_id', // confirmed — same value as receipt_id
+  // Older guesses, kept only as a safety net:
   'session_id',
   'checkout_session',
   'order_id',
