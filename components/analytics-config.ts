@@ -1,3 +1,5 @@
+import { BUNDLE_PRICE } from './site-config';
+
 /* ==========================================================================
  *  ANALYTICS & CONVERSION CONFIG  —  the ONE place to edit
  *  --------------------------------------------------------------------------
@@ -22,7 +24,9 @@ export const ADS_CONVERSION_LABEL = 'Jzz6CMyuntQcELmZ5IxD'; // "Purchase" action
 export const LEAD_CONVERSION_LABEL = 'L_kTCJ_jj9QcELmZ5IxD';
 
 /* ---- Purchase value ------------------------------------------------------ */
-export const DEFAULT_VALUE = 29.99; // confirmed bundle price (Whop passes no value)
+// Single source of truth for the price lives in site-config (BUNDLE_PRICE);
+// Whop passes no value param, so this is what every conversion reports.
+export const DEFAULT_VALUE = BUNDLE_PRICE;
 export const CURRENCY = 'USD';
 
 /* ---- Whop redirect params (CONFIRMED from a real test purchase) ----------- */
