@@ -1,5 +1,5 @@
 import { SignupForm } from './signup-form';
-import { WHOP_CHECKOUT_URL, SUPPORT_EMAIL } from './site-config';
+import { SUPPORT_EMAIL } from './site-config';
 
 /* -------------------------------------------------------------------------- */
 /*  SiteFooter — shared across the homepage and the legal pages. Keeps the warm */
@@ -21,9 +21,7 @@ export function SiteFooter({ showCta = true }: { showCta?: boolean }) {
           <p className="text-sm text-book-stone">
             Ready for the full workbook?{' '}
             <a
-              href={WHOP_CHECKOUT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/checkout"
               className="font-medium text-book-terra underline-offset-4 transition hover:underline"
             >
               Get the complete bundle &rarr;

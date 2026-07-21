@@ -17,11 +17,11 @@ export const SITE_URL = 'https://guide.delightdigital.online';
 export const WHOP_CHECKOUT_URL =
   'https://whop.com/joined/delightdigital/products/ai-made-friendly-the-complete-bundle/';
 
-// Whop plan id for the embedded checkout on /checkout.
-// TODO: paste yours — Whop Dashboard → Checkout links → ⋮ on the pricing option
-//       → Details → click the id (starts with "plan_") to copy. Until this is
-//       set, /checkout gracefully falls back to WHOP_CHECKOUT_URL above.
-export const WHOP_PLAN_ID = 'plan_XXXXXXXXX';
+// Whop plan id for the embedded checkout on /checkout — the $29.98 one-time
+// pricing option of "AI, Made Friendly — The Complete Bundle" (prod_JXlRYiN4PvYC0).
+// If this is ever blanked/changed to the placeholder, /checkout gracefully
+// falls back to WHOP_CHECKOUT_URL above.
+export const WHOP_PLAN_ID: string = 'plan_yPkYjXxLpzrcJ';
 
 // Buyer-only interactive workbook, gated by a Whop entitlement check.
 export const WORKBOOK_URL = 'https://workbook.delightdigital.online';
