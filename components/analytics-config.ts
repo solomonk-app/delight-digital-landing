@@ -19,7 +19,7 @@ export const ADS_CONVERSION_ID = 'AW-18011983033'; // Google Ads conversion ID
 export const ADS_CONVERSION_LABEL = 'Jzz6CMyuntQcELmZ5IxD'; // "Purchase" action label
 
 /* ---- Purchase value ------------------------------------------------------ */
-export const DEFAULT_VALUE = 29.98; // confirmed bundle price (Whop passes no value)
+export const DEFAULT_VALUE = 29.99; // confirmed bundle price (Whop passes no value)
 export const CURRENCY = 'USD';
 
 /* ---- Whop redirect params (CONFIRMED from a real test purchase) ----------- */
