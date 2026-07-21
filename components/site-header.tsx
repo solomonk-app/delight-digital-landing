@@ -22,9 +22,9 @@ export function SiteHeader() {
       <div className="flex items-center gap-2.5">
         <a
           href="/#bundle"
-          className="hidden items-center rounded-lg border border-book-line px-4 py-2 text-sm font-medium text-book-ink transition hover:border-book-terra/60 sm:inline-flex"
+          className="hidden items-center rounded-lg bg-book-terra px-4 py-2 text-sm font-semibold text-white transition hover:bg-book-rose sm:inline-flex"
         >
-          The bundle
+          Get the bundle now
         </a>
         <a
           href="/#get-guide"
