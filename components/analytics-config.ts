@@ -6,22 +6,20 @@
  *  and the /thank-you conversion tracker (components/conversion-tracker) both
  *  import from this file — nothing is hard-coded anywhere else.
  *
- *  ⚠️  CONFIRM BEFORE REAL AD TRAFFIC — replace any value below that is a
- *      placeholder rather than your real one:
- *        • GA4_MEASUREMENT_ID    GA4 → Admin → Data streams → "G-XXXXXXXXXX"
- *        • ADS_CONVERSION_ID     Google Ads → Goals → Conversions → tag → "AW-XXXXXXXXXX"
- *        • ADS_CONVERSION_LABEL  the label of the specific "Purchase" conversion action
- *        • the Whop URL param names (ORDER_ID / VALUE) — confirm after one test purchase
+ *  STATUS (2026-07-21): IDs, Ads label, currency, and value are CONFIRMED by
+ *  the owner. GA4 id independently verified live (gtag/js returns a configured
+ *  property). The only item still pending a live check is that Whop appends
+ *  `receipt_id` to the /thank-you redirect (params were read off a real order;
+ *  confirm once the Whop post-checkout redirect points at /thank-you).
  * ========================================================================== */
 
-/* ---- Google tag IDs ------------------------------------------------------ */
-// TODO: confirm these are your real IDs (they were provided in the brief).
-export const GA4_MEASUREMENT_ID = 'G-0FL30P2YQF';
-export const ADS_CONVERSION_ID = 'AW-18011983033';
-export const ADS_CONVERSION_LABEL = 'Jzz6CMyuntQcELmZ5IxD';
+/* ---- Google tag IDs (confirmed by the owner, 2026-07-21) ------------------ */
+export const GA4_MEASUREMENT_ID = 'G-0FL30P2YQF'; // GA4 property (verified live)
+export const ADS_CONVERSION_ID = 'AW-18011983033'; // Google Ads conversion ID
+export const ADS_CONVERSION_LABEL = 'Jzz6CMyuntQcELmZ5IxD'; // "Purchase" action label
 
 /* ---- Purchase value ------------------------------------------------------ */
-export const DEFAULT_VALUE = 29.99; // used when Whop doesn't pass a value
+export const DEFAULT_VALUE = 29.99; // confirmed bundle price (Whop passes no value)
 export const CURRENCY = 'USD';
 
 /* ---- Whop redirect params (CONFIRMED from a real test purchase) ----------- */
