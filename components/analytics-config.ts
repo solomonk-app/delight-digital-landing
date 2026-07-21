@@ -42,6 +42,13 @@ export const ORDER_ID_PARAM_CANDIDATES = [
 ];
 export const VALUE_PARAM_CANDIDATES = ['value', 'amount', 'price', 'amount_total'];
 
+// The embedded Whop checkout (/checkout) returns to /thank-you with a success
+// flag — and may not include an order id. So a success flag ALSO counts as a
+// genuine post-checkout redirect. (An order id is still preferred as the
+// transaction id when present; otherwise a fallback id is generated.)
+export const SUCCESS_FLAG_PARAMS = ['checkout_status', 'status'];
+export const SUCCESS_FLAG_VALUE = 'success';
+
 /* ---- Testing ------------------------------------------------------------- */
 // Flip to `true` to FORCE the conversions to fire even without a purchase param
 // (a dry run). While true it fires on EVERY /thank-you load, so set it back to

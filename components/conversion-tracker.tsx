@@ -11,6 +11,8 @@ import {
   ORDER_ID_PARAM,
   ORDER_ID_PARAM_CANDIDATES,
   VALUE_PARAM_CANDIDATES,
+  SUCCESS_FLAG_PARAMS,
+  SUCCESS_FLAG_VALUE,
 } from './analytics-config';
 
 /* --------------------------------------------------------------------------
@@ -75,11 +77,17 @@ export function ConversionTracker() {
       }
     }
 
-    const hasPurchaseParam = orderId !== '';
+    // A success flag (e.g. status=success from the embedded checkout) also
+    // proves this is a real post-checkout redirect, even without an order id.
+    const hasSuccessFlag = SUCCESS_FLAG_PARAMS.some(
+      (name) => params.get(name) === SUCCESS_FLAG_VALUE,
+    );
 
-    // 2) Gate: only a real post-checkout redirect (param present) — or TEST_MODE.
-    //    Direct visits with no param show the page but fire nothing.
-    if (!hasPurchaseParam && !TEST_MODE) return;
+    const isPostCheckout = orderId !== '' || hasSuccessFlag;
+
+    // 2) Gate: only a real post-checkout redirect (order id or success flag) —
+    //    or TEST_MODE. Direct visits with neither show the page but fire nothing.
+    if (!isPostCheckout && !TEST_MODE) return;
 
     // 3) Resolve the value from the URL if Whop passed it, else the default.
     let value = DEFAULT_VALUE;
@@ -94,7 +102,8 @@ export function ConversionTracker() {
       }
     }
 
-    // 4) transaction_id: the real order id, or a generated fallback (TEST_MODE).
+    // 4) transaction_id: prefer the real order id; otherwise generate one
+    //    (success-flag-only returns, or TEST_MODE).
     const transactionId =
       orderId ||
       `DD-${Date.now().toString(36)}-${Math.floor(Math.random() * 1e6).toString(36)}`;

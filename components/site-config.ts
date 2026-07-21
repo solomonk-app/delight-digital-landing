@@ -7,10 +7,21 @@
 // the free guide is reachable without one.
 export const AI_APP_URL = 'https://ai.delightdigital.online';
 
+// This site's own origin — used to build absolute URLs (e.g. the Whop embed
+// return URL, which must be an absolute HTTPS link).
+export const SITE_URL = 'https://guide.delightdigital.online';
+
 // Paid product: the public Whop sales/checkout page for
 // "AI, Made Friendly — The Complete Bundle" (anonymous visitors can buy here).
+// Used as the fallback when the on-site embedded checkout isn't configured yet.
 export const WHOP_CHECKOUT_URL =
   'https://whop.com/joined/delightdigital/products/ai-made-friendly-the-complete-bundle/';
+
+// Whop plan id for the embedded checkout on /checkout.
+// TODO: paste yours — Whop Dashboard → Checkout links → ⋮ on the pricing option
+//       → Details → click the id (starts with "plan_") to copy. Until this is
+//       set, /checkout gracefully falls back to WHOP_CHECKOUT_URL above.
+export const WHOP_PLAN_ID = 'plan_XXXXXXXXX';
 
 // Buyer-only interactive workbook, gated by a Whop entitlement check.
 export const WORKBOOK_URL = 'https://workbook.delightdigital.online';
