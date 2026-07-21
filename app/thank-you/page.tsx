@@ -44,7 +44,7 @@ export default function ThankYouPage() {
           post-checkout redirect, exactly once. Renders nothing. */}
       <ConversionTracker />
 
-      <SiteHeader />
+      <SiteHeader showActions={false} />
 
       <main className="mx-auto max-w-3xl px-6 pb-16 pt-6 sm:pt-10">
         {/* Confirmation badge */}
@@ -130,7 +130,7 @@ export default function ThankYouPage() {
         </div>
       </main>
 
-      <SiteFooter />
+      <SiteFooter showCta={false} />
     </div>
   );
 }
