@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono, Instrument_Serif } from 'next/font/google';
 import './globals.css';
+import { GoogleTag } from '../components/google-tag';
 
 const sans = Inter({
   subsets: ['latin'],
@@ -45,6 +46,10 @@ export default function RootLayout({
       lang="en"
       className={`${sans.variable} ${mono.variable} ${serif.variable}`}
     >
+      <head>
+        {/* Site-wide Google tag (gtag.js) — loads once, on every page. */}
+        <GoogleTag />
+      </head>
       <body>{children}</body>
     </html>
   );
