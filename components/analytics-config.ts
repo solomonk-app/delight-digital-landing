@@ -17,6 +17,9 @@
 export const GA4_MEASUREMENT_ID = 'G-0FL30P2YQF'; // GA4 property (verified live)
 export const ADS_CONVERSION_ID = 'AW-18011983033'; // Google Ads conversion ID
 export const ADS_CONVERSION_LABEL = 'Jzz6CMyuntQcELmZ5IxD'; // "Purchase" action label
+// "Lead" action label — fires when a visitor subscribes to the free guide.
+// Same Ads account (ADS_CONVERSION_ID); paste from Google Ads → this conversion action.
+export const LEAD_CONVERSION_LABEL = 'L_kTCJ_jj9QcELmZ5IxD';
 
 /* ---- Purchase value ------------------------------------------------------ */
 export const DEFAULT_VALUE = 29.99; // confirmed bundle price (Whop passes no value)
