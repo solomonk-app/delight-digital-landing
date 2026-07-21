@@ -59,6 +59,8 @@ export function WhopCheckout() {
       data-whop-checkout-plan-id={WHOP_PLAN_ID}
       data-whop-checkout-return-url={RETURN_URL}
       data-whop-checkout-theme="light"
+      data-whop-checkout-theme-accent-color="#C97A57"
+      data-whop-checkout-theme-border-radius="12"
       className="min-h-[640px] w-full overflow-hidden rounded-2xl border border-book-line bg-book-cream/40"
     />
   );

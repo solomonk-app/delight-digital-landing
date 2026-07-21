@@ -17,7 +17,7 @@ import {
 import { SignupForm } from '../components/signup-form';
 import { SiteHeader } from '../components/site-header';
 import { SiteFooter } from '../components/site-footer';
-import { AI_APP_URL, WHOP_CHECKOUT_URL, WORKBOOK_URL } from '../components/site-config';
+import { AI_APP_URL, WORKBOOK_URL } from '../components/site-config';
 
 /* -------------------------------------------------------------------------- */
 /*  Sandbox data — a beginner prompt builder for real, everyday tasks.         */
@@ -442,9 +442,7 @@ function Bundle() {
             {/* Primary CTA */}
             <div className="mt-9">
               <a
-                href={WHOP_CHECKOUT_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/checkout"
                 className="group inline-flex items-center justify-center gap-2 rounded-xl bg-book-terra px-7 py-3.5 text-base font-semibold text-white shadow-terra transition hover:bg-book-rose"
               >
                 Get the complete bundle

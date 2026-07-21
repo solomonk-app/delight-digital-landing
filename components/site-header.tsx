@@ -24,7 +24,7 @@ export function SiteHeader({ showActions = true }: { showActions?: boolean }) {
       {showActions && (
         <div className="flex items-center gap-2 sm:gap-2.5">
           <a
-            href="/#bundle"
+            href="/checkout"
             className="inline-flex items-center whitespace-nowrap rounded-lg bg-book-terra px-3 py-2 text-sm font-semibold text-white transition hover:bg-book-rose sm:px-4"
           >
             Get the bundle now
